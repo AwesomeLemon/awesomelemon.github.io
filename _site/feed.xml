@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/awesomelemon.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/awesomelemon.github.io/" rel="alternate" type="text/html" /><updated>2022-07-09T17:25:04+02:00</updated><id>http://localhost:4000/awesomelemon.github.io/feed.xml</id><title type="html">Alexander Chebykin</title><subtitle></subtitle><entry><title type="html">Document recognition with Python, OpenCV and Tesseract</title><link href="http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html" rel="alternate" type="text/html" title="Document recognition with Python, OpenCV and Tesseract" /><published>2017-01-15T14:49:38+01:00</published><updated>2017-01-15T14:49:38+01:00</updated><id>http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract</id><content type="html" xml:base="http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html">&lt;p&gt;Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
+On the way I heavily relied on the two following articles:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/&quot;&gt;Build a Kick-Ass Mobile Document Scanner in Just 5 Minutes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.danvk.org/2015/01/07/finding-blocks-of-text-in-an-image-using-python-opencv-and-numpy.html&quot;&gt;Finding blocks of text in an image using Python, OpenCV and numpy&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;However, I’ve added something myself, and that’s what I want to write about: the ways to improve upon the given articles to achieve the goal of recognizing plain text from photos at arbitrary angles and illumination.&lt;/p&gt;
+
+&lt;h3 id=&quot;skew-removal-first-article&quot;&gt;Skew removal (first article)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If the edges in your image aren’t recognized properly, it makes sense to move interval in Canny function to the left. For example, I’ve settled on [40, 150], instead of [75, 200] proposed in the article.&lt;/li&gt;
+  &lt;li&gt;To be able to recognize documents with less straight than rectangular shapes (for example, with curved corners), you should apply blurring to the image with detected edges. I found that it improves approximation quality even in some cases of “good” document shapes, and decreases in none.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Resulting image at this point can be fed to the Tesseract engine, but to get better results out of it, we can conduct two more steps:&lt;/p&gt;
+
+&lt;h3 id=&quot;noise-removal&quot;&gt;Noise removal&lt;/h3&gt;
+&lt;p&gt;I’ve experimented with different combinations of Gaussian blur, median blur, erosion and dilation (these last two can sound scary, but they aren’t. See &lt;a href=&quot;http://docs.opencv.org/2.4/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html&quot;&gt;Eroding and Dilating&lt;/a&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gaussian blur corrupts text more than median blur&lt;/li&gt;
+  &lt;li&gt;I found that using only dilation yields better average results than any other combination of mentioned techniques.&lt;/li&gt;
+  &lt;li&gt;In addition to removing noise, dilation makes text clearer (by making white spaces inside of letter such as ‘a’ or ‘e’ bigger)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cropping-second-article&quot;&gt;Cropping (second article)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;To achieve quicker processing, the image at this step can be resized not to the height of 2048, but of 600 (I wouldn’t recommend anything less than 500). I haven’t observed any negative effects after introducing this change.&lt;/li&gt;
+  &lt;li&gt;Two rank filters can be replaced by a single median blur&lt;/li&gt;
+  &lt;li&gt;Shape of the dilation kernel doesn’t affect the result&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now it’s time to feed the resulting image to the Tesseract. It can be done quite simply with:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;pytesseract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scan_res.jpg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Additionally, I want to mention the problem of measuring accuracy of recognition. Having found nothing on Google in the first five minutes of the search, I’ve coded my own metric, which turned out to be not that good. That forced me to google some more, and so I’ve found a paper that discusses and compares different metrics (on their own dataset, which is quite different from mine: Arabic handwriting isn’t exactly English words in print). It gave me the names of the metrics however, which was good enough. The paper can be found &lt;a href=&quot;http://www.ijcsi.org/papers/IJCSI-11-3-1-18-26.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’ve settled on Jaro-Winkler distance, which gives sufficiently accurate results. Also it’s implemented in jellyfish package, so it’s quite easy to use.
+I hope this article will prove itself useful. 
+For reference, my final code can be found &lt;a href=&quot;https://github.com/AwesomeLemon/document-recognition&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="opencv" /><category term="python" /><category term="tesseract" /><category term="ocr" /><summary type="html">Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text. On the way I heavily relied on the two following articles:</summary></entry></feed>
