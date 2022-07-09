@@ -3,6 +3,7 @@ layout: post
 title:  "Document recognition with Python, OpenCV and Tesseract"
 date:   2017-01-15 15:49:38 +0200
 tags: opencv python tesseract ocr
+comments: true
 ---
 
 Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
@@ -43,3 +44,5 @@ Additionally, I want to mention the problem of measuring accuracy of recognition
 I’ve settled on Jaro-Winkler distance, which gives sufficiently accurate results. Also it’s implemented in jellyfish package, so it’s quite easy to use.
 I hope this article will prove itself useful. 
 For reference, my final code can be found [here](https://github.com/AwesomeLemon/document-recognition)
+
+{% include disqus_comments.html %}

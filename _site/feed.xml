@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/awesomelemon.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/awesomelemon.github.io/" rel="alternate" type="text/html" /><updated>2022-07-09T17:25:04+02:00</updated><id>http://localhost:4000/awesomelemon.github.io/feed.xml</id><title type="html">Alexander Chebykin</title><subtitle></subtitle><entry><title type="html">Document recognition with Python, OpenCV and Tesseract</title><link href="http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html" rel="alternate" type="text/html" title="Document recognition with Python, OpenCV and Tesseract" /><published>2017-01-15T14:49:38+01:00</published><updated>2017-01-15T14:49:38+01:00</updated><id>http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract</id><content type="html" xml:base="http://localhost:4000/awesomelemon.github.io/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html">&lt;p&gt;Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://awesomelemon.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://awesomelemon.github.io//" rel="alternate" type="text/html" /><updated>2022-07-09T19:48:56+02:00</updated><id>https://awesomelemon.github.io//feed.xml</id><title type="html">Alexander Chebykin</title><subtitle></subtitle><entry><title type="html">Document recognition with Python, OpenCV and Tesseract</title><link href="https://awesomelemon.github.io//2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html" rel="alternate" type="text/html" title="Document recognition with Python, OpenCV and Tesseract" /><published>2017-01-15T14:49:38+01:00</published><updated>2017-01-15T14:49:38+01:00</updated><id>https://awesomelemon.github.io//2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract</id><content type="html" xml:base="https://awesomelemon.github.io//2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html">&lt;p&gt;Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
 On the way I heavily relied on the two following articles:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -41,4 +41,20 @@ On the way I heavily relied on the two following articles:&lt;/p&gt;
 
 &lt;p&gt;I’ve settled on Jaro-Winkler distance, which gives sufficiently accurate results. Also it’s implemented in jellyfish package, so it’s quite easy to use.
 I hope this article will prove itself useful. 
-For reference, my final code can be found &lt;a href=&quot;https://github.com/AwesomeLemon/document-recognition&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="opencv" /><category term="python" /><category term="tesseract" /><category term="ocr" /><summary type="html">Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text. On the way I heavily relied on the two following articles:</summary></entry></feed>
+For reference, my final code can be found &lt;a href=&quot;https://github.com/AwesomeLemon/document-recognition&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var disqus_config = function () {
+      this.page.url = 'https://awesomelemon.github.io//2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html';
+      this.page.identifier = 'https://awesomelemon.github.io//2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://alexchebykin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  &lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><author><name></name></author><category term="opencv" /><category term="python" /><category term="tesseract" /><category term="ocr" /><summary type="html">Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text. On the way I heavily relied on the two following articles:</summary></entry></feed>
