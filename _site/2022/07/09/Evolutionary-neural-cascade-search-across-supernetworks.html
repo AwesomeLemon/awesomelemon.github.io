@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>ENCAS: Search cascades of neural networks in any model pool | Alexander Chebykin</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="ENCAS: Search cascades of neural networks in any model pool" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)" />
+<meta property="og:description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)" />
+<link rel="canonical" href="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" />
+<meta property="og:url" content="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" />
+<meta property="og:site_name" content="Alexander Chebykin" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-09T15:49:38+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ENCAS: Search cascades of neural networks in any model pool" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html","headline":"ENCAS: Search cascades of neural networks in any model pool","dateModified":"2022-07-09T15:49:38+02:00","datePublished":"2022-07-09T15:49:38+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html"},"description":"Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alexander Chebykin" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Alexander Chebykin</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ENCAS: Search cascades of neural networks in any model pool</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-07-09T15:49:38+02:00" itemprop="datePublished">Jul 9, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><em>Based on our paper <a href="https://arxiv.org/abs/2203.04011">“Evolutionary Neural Cascade Search across Supernetworks”</a> (Nominated for Best Paper award @ GECCO 2022)</em></p>
+
+<p><strong>TL;DR</strong> Search for cascades of neural networks in model pools of hundreds of models, optionally using Neural Architecture Search to efficiently generate many diverse task-specific neural networks. Get dominating trade-off fronts on ImageNet and CIFAR-10/100, improved ImageNet SOTA (of publicly available models).</p>
+
+<p><strong>Table of contents:</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#motivation" id="markdown-toc-motivation">Motivation</a></li>
+  <li><a href="#background-ensembles--cascades" id="markdown-toc-background-ensembles--cascades">Background: ensembles &amp; cascades</a></li>
+  <li><a href="#where-can-we-get-models-for-our-cascades" id="markdown-toc-where-can-we-get-models-for-our-cascades">Where can we get models for our cascades?</a></li>
+  <li><a href="#background-neural-architecture-search-nas" id="markdown-toc-background-neural-architecture-search-nas">Background: Neural Architecture Search (NAS)</a></li>
+  <li><a href="#different-supernetworks-give-different-trade-off-fronts" id="markdown-toc-different-supernetworks-give-different-trade-off-fronts">Different supernetworks give different trade-off fronts</a></li>
+  <li><a href="#how-can-we-search-for-cascades" id="markdown-toc-how-can-we-search-for-cascades">How can we search for cascades?</a></li>
+  <li><a href="#experiment-setup" id="markdown-toc-experiment-setup">Experiment setup</a></li>
+  <li><a href="#dominating-trade-off-front-on-imagenet" id="markdown-toc-dominating-trade-off-front-on-imagenet">Dominating trade-off front on ImageNet</a></li>
+  <li><a href="#nas-discovered-networks-are-improved-by-cascading" id="markdown-toc-nas-discovered-networks-are-improved-by-cascading">NAS-discovered networks are improved by cascading</a></li>
+  <li><a href="#five-supernetworks-are-better-than-one" id="markdown-toc-five-supernetworks-are-better-than-one">Five supernetworks are better than one</a></li>
+  <li><a href="#encas-outperforms-efficient-nas-approaches" id="markdown-toc-encas-outperforms-efficient-nas-approaches">ENCAS outperforms efficient NAS approaches</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+<h1 id="motivation">Motivation</h1>
+
+<p>We would always like for our neural networks to be as effective and efficient as possible. In practical terms, it means maximizing some measure of performance (e.g. accuracy) while minimizing some measure of used resources (e.g. FLOPs). So we find ourselves in a multi-objective setting: we want to find a trade-off front of models of varying quality and computation requirements.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/Multi-objective_trade-off_Pareto_front.drawio.png" alt="mo-front" style="width: 50%;" /></p>
+
+<h1 id="background-ensembles--cascades">Background: ensembles &amp; cascades</h1>
+
+<p>One way to improve performance is by combining several models in an ensemble. Let’s say we have two models on our trade-off front:</p>
+
+<!-- {:refdef: style="text-align: center;"} -->
+<p><img src="/pics/encas/ens1.png" alt="mo-front" style="width: 60%;" />
+<!-- {: refdef} --></p>
+
+<p>We can create an ensemble by passing the input to both of the models and averaging their outputs. This creates a new point on the trade-off front, with improved performance, but also increased compute requirements.</p>
+
+<!-- {:refdef: style="text-align: center;"} -->
+<p><img src="/pics/encas/ens2.png" alt="mo-front" style="width: 75%;" />
+<!-- {: refdef} --></p>
+
+<p>Performance improves because, in terms of the bias-variance tradeoff, ensembling reduce variance: mistakes of different models cancel out. So ensembles <a href="http://www.j-wichard.de/publications/salerno_lncs_2003.pdf">benefit</a> from diverse member models: for the mistakes of the ensemble members to cancel out, these mistakes have to be different!</p>
+
+<!-- (An easy way to understand why different mistakes are needed for a good ensemble, is to imagine an ensemble of a model and its exact clone: since their predictions are exactly the same, averaging them doesn’t change anything, and so ensembling adds no value). -->
+
+<p>At the same time, efficiency suffers because we are now using two models instead of one, which obviously requires more compute.</p>
+
+<p>But do we actually need to use all the models on all the inputs? Not really, since there exist very simple inputs that can be classified correctly by just one model.</p>
+
+<p>That is the intuition behind cascading. A cascade is just an ensemble with an optional early exit.
+Let’s return to our two models on the trade-off front and arrange them slightly differently:</p>
+
+<!-- {:refdef: style="text-align: center;"} -->
+<p><img src="/pics/encas/casc1.png" alt="" style="width: 85%;" />
+<!-- {: refdef} --></p>
+
+<p>While in an ensemble we passed the input to both of the models, in a cascade we’ll start by passing it only to the first one.</p>
+
+<p>Then we can estimate the confidence of the model’s output - and if it is high enough, stop the computation and return this output as the cascade’s prediction. So if the input is easy, only the first model will be used, and compute won’t be wasted on running the second one.</p>
+
+<p>If, on the other hand, the input is hard, and the first model is not confident, we will pass the input to the second model, and average the outputs of the models, the same way as we did in an ensemble.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/casc1.5.png" alt="" style="width: 85%;" /></p>
+
+<p>And now we have our cascade, which is again a new point on the trade-off front.</p>
+
+<!-- {:refdef: style="text-align: center;"} -->
+<p><img src="/pics/encas/casc2.png" alt="" style="width: 95%;" />
+<!-- {: refdef} --></p>
+
+<p>In this case not only has the performance improved (since for hard inputs a cascade is equivalent to an ensemble), but the required compute didn’t grow too much: only the first model is used for all the inputs, and the second one is used rarely, when it’s actually needed. This means that on average we save a lot of compute, and that’s great!</p>
+
+<p><a name="cascades"></a></p>
+
+<p>How can we represent a cascade of two models? Well, we need to reference the two used models, and we need to define a confidence threshold for deciding whether to do an early exit:</p>
+
+<p style="text-align: center;"><img src="/pics/encas/casc_repr1.png" alt="" style="width: 30%;" /></p>
+
+<p>This trivially extends to larger cascades: for a cascade of three models we need two thresholds: the first one to decide whether to stop after the first model; and the second one to decide whether to stop after the second model.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/casc3.png" alt="" style="width: 95%;" /></p>
+
+<p style="text-align: center;"><img src="/pics/encas/casc_repr2.png" alt="" style="width: 55%;" /></p>
+
+<p>In general, for <em><strong>k</strong></em> models we need <em><strong>k - 1</strong></em> thresholds.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/casc_repr3.png" alt="" style="width: 65%;" /></p>
+
+<p>To sum up, in order to create a cascade we need to select models that work well together, and choose thresholds for deciding on an early exit.</p>
+
+<h1 id="where-can-we-get-models-for-our-cascades">Where can we get models for our cascades?</h1>
+
+<ol>
+  <li><strong>Downloading pre-trained models</strong> is good if they exist for the dataset you’re interested in, which is often not the case.</li>
+  <li><strong>Training many networks manually</strong> is possible but labour-intensive, and it’s usually not feasible to train a really large amount of models.</li>
+  <li><strong>Neural Architecture Search</strong> allows creating hundreds of diverse task-specific models in a single run.</li>
+</ol>
+
+<h1 id="background-neural-architecture-search-nas">Background: Neural Architecture Search (NAS)</h1>
+
+<p>NAS is a paradigm of the automatic search for a task-specific neural network architecture. Architecture can be searched via many approaches, in our work we rely on Evolutionary Algorithms (EAs).</p>
+
+<p>An important direction of NAS research is weight sharing: for the sake of efficiency, not all possible architectures are considered but only those that are subsets of a supernetwork.</p>
+
+<p>In the toy supernetwork below, there are just two possible operations in each position, a subnetwork can use one of them.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/supernet1.png" alt="" style="width: 65%;" /></p>
+
+<p>This approach is efficient because different subnetworks that use the same operation in the same position can share the weights of this operation (and so they don’t have to be trained from scratch).</p>
+
+<p style="text-align: center;"><img src="/pics/encas/supernet2.png" alt="" style="width: 65%;" /></p>
+
+<p>In the early supernetwork-based approaches (such as <a href="https://arxiv.org/abs/1806.09055">DARTS</a>), the best subnetwork was retrained from scratch after the search. However, there now exist algorithms for training a supernetwork (e.g. <a href="https://ofa.mit.edu/">OFA</a>, <a href="https://arxiv.org/abs/2102.07954">AlphaNet</a>) such that the subnetworks require <strong>no retraining</strong> - and so if you have a trained supernetwork, you can create hundreds of different models without additional costs!</p>
+
+<p>But the diversity of the models in a supernetwork is restricted by the design of the supernetwork, since all of the subnetworks need to be trained together.</p>
+
+<p>We became curious about how much the results of NAS are influenced by the manual step of choosing a supernetwork, so we investigated what happens with a prominent NAS algorithm called <a href="https://arxiv.org/abs/2005.05859">Neural Architecture Transfer</a> (NAT). NAT is a multi-objective NAS algorithm that can adapt a pretrained supernetwork to any task with the help of an EA called <a href="https://www.researchgate.net/publication/264387359_An_Evolutionary_Many-Objective_Optimization_Algorithm_Using_Reference-Point-Based_Nondominated_Sorting_Approach_Part_I_Solving_Problems_With_Box_Constraints">NSGA-III</a>.</p>
+
+<h1 id="different-supernetworks-give-different-trade-off-fronts">Different supernetworks give different trade-off fronts</h1>
+
+<p>We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here what they look like for ImageNet):</p>
+
+<p style="text-align: center;"><img src="/pics/encas/diff_fronts.png" alt="" style="width: 35%;" /></p>
+
+<p>Moreover, there is no supernetwork that covers both very small and very large models.</p>
+
+<p>So the manual choice of a supernetwork restricts what a NAS algorithm can find before the search even starts!</p>
+
+<p>This makes sense, since each supernetwork defines its own search space, with different possible operations, different numbers of layers, and so on.</p>
+
+<p>This also means that subnetworks coming from different supernetworks can be quite diverse. And that’s exactly what we need to create good cascades!</p>
+
+<p>So we can use NAT on each supernetwork separately, and then put all the found models into a single model pool. This way, we can efficiently create many task-specific models that are also diverse because they come from different supernetworks.</p>
+
+<h1 id="how-can-we-search-for-cascades">How can we search for cascades?</h1>
+
+<p>We need several ingredients to define our search procedure.</p>
+
+<p><strong>Solution representation</strong> follows the description mentioned <a href="#cascades">above</a>: a cascade of size <strong>k</strong> can be represented by <strong>k</strong> models (i.e. the indices of the models in our model pool) and <strong>k-1</strong> confidence thresholds (we use indices of discretized values in the [0.0, 1.0] range)</p>
+
+<p>Our multi-objective <strong>fitness function</strong> estimates the effectivity (e.g. accuracy) and the efficiency (e.g. FLOPs) of a cascade by evaluating it on the validation set.</p>
+
+<p>Any general-purpose multi-objective <strong>algorithm</strong> can be applied to optimize the fitness function, we use <a href="https://www.sciencedirect.com/science/article/pii/S2210650217304765">MO-GOMEA</a>, a well-performing EA that requires no hyperparameter tuning (and none was done in our case).</p>
+
+<p>Our algorithm (ENCAS) can be briefly summed up like this:</p>
+
+<ol start="0">
+  <li><span style="color:#505050">(optional) Create diverse models for the specific task by running NAT on many supernetworks.</span></li>
+  <li>Create a combined model pool of all the available models.</li>
+  <li>Search for cascades via MO-GOMEA.</li>
+</ol>
+
+<p>ENCAS has several advantages:</p>
+<ol>
+  <li>Efficient runtime of 1 GPU-hour thanks to pre-computing the outputs of all the models (which we can do because the models are known in advance).</li>
+  <li>Usage of pre-trained weights, which are always important for good performance of neural networks.</li>
+  <li>The user only needs to set the maximum cascade size, smaller cascades can still be found. This is achieved by the inclusion of a “no operation” model that does nothing: if a cascade of e.g. size 3 includes this model, it effectively becomes a cascade of size 2.</li>
+</ol>
+
+<h1 id="experiment-setup">Experiment setup</h1>
+
+<p>We test our approach on CIFAR-10, CIFAR-100, and ImageNet.</p>
+
+<p>Note that for our ImageNet experiments we used additional data for search: we have to do it because search requires data not seen during training, but the pretrained weights that we rely on were trained with all the data. So we use ImageNetV2 for cascade evaluation during the search. Since the size of this additional data is small (it’s just 1.6% of the ImageNet), we hope that the impact of this is negligible.</p>
+
+<p><span style="color:grey">
+(also, in our preliminary experiments we tried splitting the ImageNet validation set into two halves - one for the search, and one for reporting the results - and achieved similar results. But since in the literature the results on the whole validation set are usually reported, and we wanted our results to be easy to compare to, we decided to report the results on the whole validation set, and use ImageNetV2 for search).
+</span></p>
+
+<p>For all the datasets, the test set was only used to report the results, it was never used to select models, and so some of our trade-off fronts are not monotonous (since the models were selected based on the validation performance, but the test performance is shown).</p>
+
+<p>Each experiment was run 10 times, the median run (by hypervolume) is plotted, and the area between the worst and the best trade-off fronts is shaded.</p>
+
+<h1 id="dominating-trade-off-front-on-imagenet">Dominating trade-off front on ImageNet</h1>
+
+<p>We ran ENCAS on 518 pre-trained models from <a href="https://github.com/rwightman/pytorch-image-models">timm</a>, which is a brilliant library that includes a wide variety of models that are small (e.g. MobileNetV3@60 MFLOPS), large (e.g. BeiT@362,000 MFLOPS), and everything in between.</p>
+
+<p>ENCAS found a trade-off front of cascades that dominates across the board:</p>
+
+<p style="text-align: center;"><img src="/pics/encas/imagenet.png" alt="" style="width: 40%;" /></p>
+
+<p>The maximum accuracy was also improved from 88.6% to 89.0%, while the amount of required compute decreased by 18%, from 362 to 296 GFLOPs.</p>
+
+<p>ENCAS finds hundreds of good cascades, which means you can choose one that fits your computational constraints just right.</p>
+
+<p>And all of this was achieved in a single run that took just one GPU-hour! 
+(Well, that’s how long the search itself takes. Prior to it, all the models need to be evaluated, and their outputs stored, which takes some hours, but only needs to be done once)</p>
+
+<p>The ability to work in a search space of hundreds of models is important for great results. In the previous <a href="https://arxiv.org/abs/2012.01988">work</a> that strongly inspired us, cascades of EfficientNet models were found via grid search.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/imagenet2.png" alt="" style="width: 40%;" /></p>
+
+<p>The resulting cascades improve the trade-off front, but it’s hard to go beyond the models available in the pool (which motivates making the pool as large as possible, which in turn prohibits the usage of inefficient approaches like grid search (to be clear, the authors of the <a href="https://arxiv.org/abs/2012.01988">work</a> point it out themselves; the search algorithm was not the key part of that work)).</p>
+
+<h1 id="nas-discovered-networks-are-improved-by-cascading">NAS-discovered networks are improved by cascading</h1>
+
+<p>We applied our implementation of NAT to 5 supernetworks, and chose the one that produced the best trade-off front. Then we ran ENCAS on the models from this front, and achieved better trade-off fronts for all the datasets!</p>
+
+<p style="text-align: center;"><img src="/pics/encas/beatNat.png" alt="" style="width: 90%;" /></p>
+
+<h1 id="five-supernetworks-are-better-than-one">Five supernetworks are better than one</h1>
+
+<p>We then applied ENCAS to the trade-off fronts of all five supernetworks instead of just the best one, and the results improved even more:</p>
+
+<p style="text-align: center;"><img src="/pics/encas/5beat1.png" alt="" style="width: 90%;" /></p>
+
+<p>This means that increasing the size &amp; diversity of the model pool improves the results. Our method is able to work with models from arbitrary supernetworks, and thus make use of diverse &amp; incompatible search spaces.</p>
+
+<p>(But I should mention that currently available supernetworks are not very diverse, and so the impact is not as big as it could be - see the paper for further discussion of this and other limitations)</p>
+
+<p>Still, the current good results mean that…</p>
+
+<h1 id="encas-outperforms-efficient-nas-approaches">ENCAS outperforms efficient NAS approaches</h1>
+
+<p>(in most cases)</p>
+
+<p>This is achieved in large part thanks to cascades and to the availability of ImageNet-pretrained supernetworks that NAT can effectively adapt to the task at hand, thus creating a good model pool for ENCAS.</p>
+
+<p style="text-align: center;"><img src="/pics/encas/beatAll.png" alt="" style="width: 90%;" /></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>The main strength of ENCAS is its generality: any trade-off front of models can be improved by cascading - it doesn’t matter where the models came from. For example, it would be possible to outperform EfficientNet-s on CIFAR-100 by simply adding these models to the model pool of the NAT-derived models.</p>
+
+<p>This means that you need to simply get many models in any way you want, and then just let the search find good cascades for you, making the model on your trade-off front more effective and efficient.</p>
+
+<p>Our <a href="https://github.com/AwesomeLemon/ENCAS">full code</a> is publicly available, so I invite you to try it out for yourself.</p>
+
+<p>The <a href="https://arxiv.org/abs/2203.04011">full paper</a> contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!</p>
+
+<p>To cite:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{10.1145/3512290.3528749,
+	author = {Chebykin, Alexander and Alderliesten, Tanja and Bosman, Peter A. N.},
+	title = {Evolutionary Neural Cascade Search across Supernetworks},
+	year = {2022},
+	isbn = {9781450392372},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	url = {https://doi.org/10.1145/3512290.3528749},
+	doi = {10.1145/3512290.3528749},
+	booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference},
+	pages = {1038–1047},
+	numpages = {10},
+	series = {GECCO '22}
+}
+</code></pre></div></div>
+
+
+  </div><a class="u-url" href="/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Alexander Chebykin</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Alexander Chebykin</li><li><a class="u-email" href="mailto:a.e.chebykin@gmail.com">a.e.chebykin@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AwesomeLemon"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">AwesomeLemon</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
