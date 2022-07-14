@@ -6,7 +6,7 @@ date:   2022-07-12 17:58:38 +0200
 comments: true
 ---
 
-_Based on our paper ["Evolutionary Neural Cascade Search across Supernetworks"](https://arxiv.org/abs/2203.04011) (Nominated for Best Paper award @ GECCO 2022)_
+_Based on our paper ["Evolutionary Neural Cascade Search across Supernetworks"](https://arxiv.org/abs/2203.04011) (Best Paper award @ GECCO 2022)_
 
 **TL;DR** Search for cascades of neural networks in model pools of hundreds of models, optionally using Neural Architecture Search to efficiently generate many diverse task-specific neural networks. Get dominating trade-off fronts on ImageNet and CIFAR-10/100, improved ImageNet SOTA (of publicly available models).
 
@@ -127,7 +127,7 @@ We became curious about how much the results of NAS are influenced by the manual
 
 # Different supernetworks give different trade-off fronts
 
-We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here what they look like for ImageNet):
+We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here is what they look like for ImageNet):
 
 {:refdef: style="text-align: center;"}
 ![](/pics/encas/diff_fronts.png){: style="width: 35%;" }
@@ -243,9 +243,9 @@ The main strength of ENCAS is its generality: any trade-off front of models can 
 
 This means that you need to simply get many models in any way you want, and then just let the search find good cascades for you, making the model on your trade-off front more effective and efficient.
 
-Our [full code](https://github.com/AwesomeLemon/ENCAS) is publicly available, so I invite you to try it out for yourself.
+Our [code](https://github.com/AwesomeLemon/ENCAS) is publicly available, so I invite you to try it out for yourself.
 
-The [full paper](https://arxiv.org/abs/2203.04011 ) contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!
+The [paper](https://arxiv.org/abs/2203.04011 ) contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!
 
 To cite:
 
