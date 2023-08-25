@@ -64,6 +64,11 @@ table th, table td { padding: 10px 15px; }
 table th { background-color: #f0f0f0; border: 1px solid #dedede; border-bottom-color: #c9c9c9; }
 table td { border: 1px solid #e8e8e8; }
 
+/*
+make my github username & logo be on the same line
+*/
+.github-link a { display: flex; align-items: center; }
+
 /** Site header */
 .site-header { border-top: 5px solid #424242; border-bottom: 1px solid #e8e8e8; min-height: 55.95px; position: relative; }
 

@@ -19,7 +19,14 @@
 <script type="application/ld+json">
 {"@type":"BlogPosting","url":"http://localhost:4000/2023/08/25/nvcc-no-root.html","headline":"Install nvcc without root","dateModified":"2023-08-25T17:58:38+02:00","datePublished":"2023-08-25T17:58:38+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2023/08/25/nvcc-no-root.html"},"description":"I needed to install nvcc on our group server, where I lack root privileges. I found a nice guide, in this post I will slightly expand on it by explicitly mentioning every step I had to take. Hopefully this will make life easier for future-me and for my colleagues :)","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alexander Chebykin" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alexander Chebykin" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Alexander Chebykin</a><nav class="site-nav">
@@ -54,7 +61,7 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda_11.7.0_515.43.04_linux.run
 </code></pre></div></div>
 
-<p>On our servers there is not enough space in /tmp for the next step, so:</p>
+<p>On our servers there is not enough space in <code class="language-plaintext highlighter-rouge">/tmp</code> for the next step, so:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export TMPDIR='/export/scratch2/data/aleksand/tmp'
 </code></pre></div></div>
 
@@ -82,7 +89,7 @@ export CPATH=/export/scratch2/data/aleksand/cuda117/include:$CPATH
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Alexander Chebykin</h2>
+    <!-- <h2 class="footer-heading">Alexander Chebykin</h2> -->
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
@@ -90,7 +97,14 @@ export CPATH=/export/scratch2/data/aleksand/cuda117/include:$CPATH
           <li class="p-name">Alexander Chebykin</li><li><a class="u-email" href="mailto:alex@chebykin.dev">alex@chebykin.dev</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AwesomeLemon"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">AwesomeLemon</span></a></li><li><a href="https://www.twitter.com/a__chebykin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">a__chebykin</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list">
+  <!---->
+  <!---->
+  <!----><li class="github-link"><a href="https://github.com/AwesomeLemon"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">AwesomeLemon</span></a></li><!---->
+  <!---->
+  <!---->
+  <!----><li><a href="https://www.twitter.com/a__chebykin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">a__chebykin</span></a></li><!---->
+  <!----></ul>
 </div>
 
       <div class="footer-col footer-col-3">
