@@ -7,17 +7,17 @@
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="ENCAS: Search cascades of neural networks in any model pool" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)" />
-<meta property="og:description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)" />
-<link rel="canonical" href="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" />
-<meta property="og:url" content="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" />
+<meta name="description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Best Paper award @ GECCO 2022)" />
+<meta property="og:description" content="Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Best Paper award @ GECCO 2022)" />
+<link rel="canonical" href="http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html" />
+<meta property="og:url" content="http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html" />
 <meta property="og:site_name" content="Alexander Chebykin" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-07-09T15:49:38+02:00" />
+<meta property="article:published_time" content="2022-07-12T17:58:38+02:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ENCAS: Search cascades of neural networks in any model pool" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html","headline":"ENCAS: Search cascades of neural networks in any model pool","dateModified":"2022-07-09T15:49:38+02:00","datePublished":"2022-07-09T15:49:38+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html"},"description":"Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html","headline":"ENCAS: Search cascades of neural networks in any model pool","dateModified":"2022-07-12T17:58:38+02:00","datePublished":"2022-07-12T17:58:38+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html"},"description":"Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Best Paper award @ GECCO 2022)","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alexander Chebykin" /></head>
 <body><header class="site-header" role="banner">
@@ -42,12 +42,12 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">ENCAS: Search cascades of neural networks in any model pool</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2022-07-09T15:49:38+02:00" itemprop="datePublished">Jul 9, 2022
+      <time class="dt-published" datetime="2022-07-12T17:58:38+02:00" itemprop="datePublished">Jul 12, 2022
       </time></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p><em>Based on our paper <a href="https://arxiv.org/abs/2203.04011">“Evolutionary Neural Cascade Search across Supernetworks”</a> (Nominated for Best Paper award @ GECCO 2022)</em></p>
+    <p><em>Based on our paper <a href="https://arxiv.org/abs/2203.04011">“Evolutionary Neural Cascade Search across Supernetworks”</a> (Best Paper award @ GECCO 2022)</em></p>
 
 <p><strong>TL;DR</strong> Search for cascades of neural networks in model pools of hundreds of models, optionally using Neural Architecture Search to efficiently generate many diverse task-specific neural networks. Get dominating trade-off fronts on ImageNet and CIFAR-10/100, improved ImageNet SOTA (of publicly available models).</p>
 
@@ -166,7 +166,7 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 
 <h1 id="different-supernetworks-give-different-trade-off-fronts">Different supernetworks give different trade-off fronts</h1>
 
-<p>We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here what they look like for ImageNet):</p>
+<p>We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here is what they look like for ImageNet):</p>
 
 <p style="text-align: center;"><img src="/pics/encas/diff_fronts.png" alt="" style="width: 35%;" /></p>
 
@@ -272,9 +272,9 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 
 <p>This means that you need to simply get many models in any way you want, and then just let the search find good cascades for you, making the model on your trade-off front more effective and efficient.</p>
 
-<p>Our <a href="https://github.com/AwesomeLemon/ENCAS">full code</a> is publicly available, so I invite you to try it out for yourself.</p>
+<p>Our <a href="https://github.com/AwesomeLemon/ENCAS">code</a> is publicly available, so I invite you to try it out for yourself.</p>
 
-<p>The <a href="https://arxiv.org/abs/2203.04011">full paper</a> contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!</p>
+<p>The <a href="https://arxiv.org/abs/2203.04011">paper</a> contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!</p>
 
 <p>To cite:</p>
 
@@ -295,7 +295,7 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 </code></pre></div></div>
 
 
-  </div><a class="u-url" href="/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" hidden></a>
+  </div><a class="u-url" href="/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html" hidden></a>
 </article>
 
       </div>
@@ -309,10 +309,10 @@ Let’s return to our two models on the trade-off front and arrange them slightl
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">Alexander Chebykin</li><li><a class="u-email" href="mailto:a.e.chebykin@gmail.com">a.e.chebykin@gmail.com</a></li></ul>
+          <li class="p-name">Alexander Chebykin</li><li><a class="u-email" href="mailto:alex@chebykin.dev">alex@chebykin.dev</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AwesomeLemon"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">AwesomeLemon</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AwesomeLemon"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">AwesomeLemon</span></a></li><li><a href="https://www.twitter.com/a__chebykin"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">a__chebykin</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">

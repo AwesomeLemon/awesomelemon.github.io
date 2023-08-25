@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-12T17:55:48+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alexander Chebykin</title><subtitle></subtitle><entry><title type="html">ENCAS: Search cascades of neural networks in any model pool</title><link href="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html" rel="alternate" type="text/html" title="ENCAS: Search cascades of neural networks in any model pool" /><published>2022-07-09T15:49:38+02:00</published><updated>2022-07-09T15:49:38+02:00</updated><id>http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks</id><content type="html" xml:base="http://localhost:4000/2022/07/09/Evolutionary-neural-cascade-search-across-supernetworks.html">&lt;p&gt;&lt;em&gt;Based on our paper &lt;a href=&quot;https://arxiv.org/abs/2203.04011&quot;&gt;“Evolutionary Neural Cascade Search across Supernetworks”&lt;/a&gt; (Nominated for Best Paper award @ GECCO 2022)&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-25T21:57:48+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alexander Chebykin</title><subtitle></subtitle><entry><title type="html">Install nvcc without root</title><link href="http://localhost:4000/2023/08/25/nvcc-no-root.html" rel="alternate" type="text/html" title="Install nvcc without root" /><published>2023-08-25T17:58:38+02:00</published><updated>2023-08-25T17:58:38+02:00</updated><id>http://localhost:4000/2023/08/25/nvcc-no-root</id><content type="html" xml:base="http://localhost:4000/2023/08/25/nvcc-no-root.html">&lt;p&gt;I needed to install &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvcc&lt;/code&gt; on our group server, where I lack root privileges. I found a nice &lt;a href=&quot;https://github.com/pyg-team/pytorch_geometric/issues/392#issuecomment-503335625&quot;&gt;guide&lt;/a&gt;, in this post I will slightly expand on it by explicitly mentioning every step I had to take. Hopefully this will make life easier for future-me and for my colleagues :)&lt;/p&gt;
+
+&lt;p&gt;Download a &lt;a href=&quot;https://developer.nvidia.com/cuda-downloads&quot;&gt;runfile&lt;/a&gt; for your OS:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda_11.7.0_515.43.04_linux.run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On our servers there is not enough space in /tmp for the next step, so:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export TMPDIR='/export/scratch2/data/aleksand/tmp'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install toolkit only (assumes that the drivers are already installed)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash cuda_11.7.0_515.43.04_linux.run --silent --override --toolkit --toolkitpath=/export/scratch2/data/aleksand/cuda117
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, export three paths (you can also add them to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export LD_LIBRARY_PATH=/export/scratch2/data/aleksand/cuda117/lib64:$LD_LIBRARY_PATH
+export PATH=/export/scratch2/data/aleksand/cuda117/bin:$PATH
+export CPATH=/export/scratch2/data/aleksand/cuda117/include:$CPATH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;P.S. My use case (StyleGAN 2) needed gcc (and g++) version &amp;lt; 11, they can be easily installed via conda:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda install -c conda-forge gcc=10.4.0 gxx=10.4.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">I needed to install nvcc on our group server, where I lack root privileges. I found a nice guide, in this post I will slightly expand on it by explicitly mentioning every step I had to take. Hopefully this will make life easier for future-me and for my colleagues :)</summary></entry><entry><title type="html">ENCAS: Search cascades of neural networks in any model pool</title><link href="http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html" rel="alternate" type="text/html" title="ENCAS: Search cascades of neural networks in any model pool" /><published>2022-07-12T17:58:38+02:00</published><updated>2022-07-12T17:58:38+02:00</updated><id>http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks</id><content type="html" xml:base="http://localhost:4000/2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html">&lt;p&gt;&lt;em&gt;Based on our paper &lt;a href=&quot;https://arxiv.org/abs/2203.04011&quot;&gt;“Evolutionary Neural Cascade Search across Supernetworks”&lt;/a&gt; (Best Paper award @ GECCO 2022)&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Search for cascades of neural networks in model pools of hundreds of models, optionally using Neural Architecture Search to efficiently generate many diverse task-specific neural networks. Get dominating trade-off fronts on ImageNet and CIFAR-10/100, improved ImageNet SOTA (of publicly available models).&lt;/p&gt;
 
@@ -117,7 +140,7 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 
 &lt;h1 id=&quot;different-supernetworks-give-different-trade-off-fronts&quot;&gt;Different supernetworks give different trade-off fronts&lt;/h1&gt;
 
-&lt;p&gt;We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here what they look like for ImageNet):&lt;/p&gt;
+&lt;p&gt;We run NAT on 5 different supernetworks, and find that the resulting trade-off fronts differ a lot (here is what they look like for ImageNet):&lt;/p&gt;
 
 &lt;p style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;/pics/encas/diff_fronts.png&quot; alt=&quot;&quot; style=&quot;width: 35%;&quot; /&gt;&lt;/p&gt;
 
@@ -223,9 +246,9 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 
 &lt;p&gt;This means that you need to simply get many models in any way you want, and then just let the search find good cascades for you, making the model on your trade-off front more effective and efficient.&lt;/p&gt;
 
-&lt;p&gt;Our &lt;a href=&quot;https://github.com/AwesomeLemon/ENCAS&quot;&gt;full code&lt;/a&gt; is publicly available, so I invite you to try it out for yourself.&lt;/p&gt;
+&lt;p&gt;Our &lt;a href=&quot;https://github.com/AwesomeLemon/ENCAS&quot;&gt;code&lt;/a&gt; is publicly available, so I invite you to try it out for yourself.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href=&quot;https://arxiv.org/abs/2203.04011&quot;&gt;full paper&lt;/a&gt; contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://arxiv.org/abs/2203.04011&quot;&gt;paper&lt;/a&gt; contains more cool experiments (e.g. joint supernetwork weight adaptation and cascade architecture search) - check it out if you’re interested!&lt;/p&gt;
 
 &lt;p&gt;To cite:&lt;/p&gt;
 
@@ -243,7 +266,7 @@ Let’s return to our two models on the trade-off front and arrange them slightl
 	numpages = {10},
 	series = {GECCO '22}
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Nominated for Best Paper award @ GECCO 2022)</summary></entry><entry><title type="html">Document recognition with Python, OpenCV and Tesseract</title><link href="http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html" rel="alternate" type="text/html" title="Document recognition with Python, OpenCV and Tesseract" /><published>2017-01-15T14:49:38+01:00</published><updated>2017-01-15T14:49:38+01:00</updated><id>http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract</id><content type="html" xml:base="http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html">&lt;p&gt;Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Based on our paper “Evolutionary Neural Cascade Search across Supernetworks” (Best Paper award @ GECCO 2022)</summary></entry><entry><title type="html">Document recognition with Python, OpenCV and Tesseract</title><link href="http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html" rel="alternate" type="text/html" title="Document recognition with Python, OpenCV and Tesseract" /><published>2017-01-15T14:49:38+01:00</published><updated>2017-01-15T14:49:38+01:00</updated><id>http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract</id><content type="html" xml:base="http://localhost:4000/2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html">&lt;p&gt;Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
 On the way I heavily relied on the two following articles:&lt;/p&gt;
 
 &lt;ol&gt;
