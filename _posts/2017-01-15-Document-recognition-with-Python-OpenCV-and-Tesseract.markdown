@@ -44,5 +44,3 @@ Additionally, I want to mention the problem of measuring accuracy of recognition
 I’ve settled on Jaro-Winkler distance, which gives sufficiently accurate results. Also it’s implemented in jellyfish package, so it’s quite easy to use.
 I hope this article will prove itself useful. 
 For reference, my final code can be found [here](https://github.com/AwesomeLemon/document-recognition)
-
-{% include disqus_comments.html %}
