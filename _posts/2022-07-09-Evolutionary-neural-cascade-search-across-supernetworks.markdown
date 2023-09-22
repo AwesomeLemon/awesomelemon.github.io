@@ -9,6 +9,7 @@ comments: true
 _Based on our paper ["Evolutionary Neural Cascade Search across Supernetworks"](https://arxiv.org/abs/2203.04011) (Best Paper award @ GECCO 2022)_
 
 **TL;DR** Search for cascades of neural networks in model pools of hundreds of models, optionally using Neural Architecture Search to efficiently generate many diverse task-specific neural networks. Get dominating trade-off fronts on ImageNet and CIFAR-10/100, improved ImageNet SOTA (of publicly available models).
+<!--more-->
 
 **Table of contents:**
 * Table of contents

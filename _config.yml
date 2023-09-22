@@ -26,6 +26,8 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+show_excerpts: true
+excerpt_separator: "<!--more-->"
 
 # minima:
 #   skin: dark

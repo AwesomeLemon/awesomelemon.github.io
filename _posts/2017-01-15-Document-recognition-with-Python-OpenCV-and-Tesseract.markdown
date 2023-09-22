@@ -6,7 +6,7 @@ tags: opencv python tesseract ocr
 comments: true
 ---
 
-Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.
+Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.<!--more-->
 On the way I heavily relied on the two following articles:
 
 1. [Build a Kick-Ass Mobile Document Scanner in Just 5 Minutes](http://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/)

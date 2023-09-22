@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <!-- {: .center} -->
-![me](me.jpg){: width="250" align="left" style="padding: 20px;"}
+![me](me.jpg){: width="170" align="left" style="padding: 20px;"}
 
 Hi! I'm a PhD student in the Evolutionary Intelligence group at the Dutch Institute for Maths & Computer Science (CWI). 
 
