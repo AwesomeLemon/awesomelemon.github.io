@@ -17,3 +17,4 @@ Always happy to chat about these topics! Drop me a line at [alex@chebykin.dev](m
 
 Research-wise I'm also interested in explainable AI (my Master thesis was partly about using NAS for explainability) and image generation (the applied part of my PhD project is about privacy-preserving medical image data sharing with GANs). Life-wise I'm into fantasy, hiking, and discussing weird ideas. 
 
+[CV](misc/CV_Chebykin.pdf)
