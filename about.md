@@ -15,5 +15,5 @@ I'm convinced that computer science is a [strong-link problem](https://www.exper
 
 Always happy to chat about these topics! Drop me a line at [alex@chebykin.dev](mailto:alex@chebykin.dev)
 
-Research-wise I'm also interested in explainable AI (my Master thesis was partly about leveraging NAS for explainability) and image generation (the applied part of my PhD project is about privacy-preserving medical image data sharing with GANs). Life-wise I'm into fantasy, hiking, and discussing weird ideas. 
+Research-wise I'm also interested in explainable AI (my Master thesis was partly about using NAS for explainability) and image generation (the applied part of my PhD project is about privacy-preserving medical image data sharing with GANs). Life-wise I'm into fantasy, hiking, and discussing weird ideas. 
 
