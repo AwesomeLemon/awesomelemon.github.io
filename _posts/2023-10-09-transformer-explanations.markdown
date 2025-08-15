@@ -44,3 +44,5 @@ The goal is to provide a collection of links for you to choose from, but reading
 *Comment/opinion:* This is a rearranged version of the paper intermingled with the code. Extensive. Math rendered nicely. Illustrations are ok.
 
 That's it! If you have suggestions on what else to include, send me an email :)
+
+{% include comments.html %}

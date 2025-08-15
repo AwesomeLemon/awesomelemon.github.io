@@ -33,3 +33,5 @@ P.S. My use case (StyleGAN 2) needed gcc (and g++) version < 11, they can be eas
 ```
 conda install -c conda-forge gcc=10.4.0 gxx=10.4.0
 ```
+
+{% include comments.html %}

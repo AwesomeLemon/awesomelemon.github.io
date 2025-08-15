@@ -85,3 +85,5 @@ PBT-NAS removes some limitations of weight sharing but still has some of its own
 Still, PBT-NAS performs well in challenging settings, and is a non-standard approach to efficient NAS. I think we could all benefit from having more of those.
 
 [The paper](https://arxiv.org/abs/2307.15621) contains more experiments & fewer hot takes, the code is [public](https://github.com/AwesomeLemon/PBT-NAS).
+
+{% include comments.html %}
