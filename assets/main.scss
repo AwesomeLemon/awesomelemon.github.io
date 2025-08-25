@@ -46,3 +46,52 @@
 
 .site-title { line-height: 1.2; margin: 4px; }
 .site-nav { line-height: 1.2; display: flex; align-items: baseline; margin-left: auto; }
+
+/* Theming overrides */
+body { background-color: #faf9f5; }
+a, a:visited {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #5db7f2;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+a:hover, a:focus {
+  color: inherit;
+  text-decoration-color: #2a7ae2;
+  text-decoration-thickness: 2px;
+}
+
+/* Do not underline icon-only links or the site title */
+.site-header .social-media-list a,
+.site-header .social-media-list a:hover,
+.site-header .social-media-list a:focus {
+  text-decoration: none;
+}
+.site-title,
+.site-title:visited,
+.site-title:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Cards for homepage entries */
+.card {
+  background: #fffdf6; /* slightly lighter than page bg */
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  margin-bottom: 2rem;
+}
+.card::after { content: ""; display: table; clear: both; }
+
+
+
+.home .post-list > li {
+  background: #fffdf6;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}

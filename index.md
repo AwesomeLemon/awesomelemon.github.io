@@ -9,13 +9,12 @@ list_title: Blog
 <style>
   .post-list-heading { text-align: center; }
 </style>
+![Alexander Chebykin](me.jpg){: width="174" style="float: left; margin: 0 20px 10px 0; border-radius: 10px;"}
 
-![Alexander Chebykin](me.jpg){: width="170" style="float: left; margin: 0 20px 10px 0; border-radius: 10px;"}
+Hi! I'm a **machine learning scientist** with a **software engineering** & **mathematics** background. Currently putting the finishing touches to a PhD on **hyperparameter optimization** for **deep learning** in the [Evolutionary Intelligence](https://www.cwi.nl/en/groups/evolutionary-intelligence/) group at [CWI](https://en.wikipedia.org/wiki/Centrum_Wiskunde_%26_Informatica) & TU Delft.
 
-Hi! I'm a machine learning scientist finishing a PhD on Hyperparameter optimization for Deep Learning in the [Evolutionary Intelligence](https://www.cwi.nl/en/groups/evolutionary-intelligence/) group at [CWI](https://en.wikipedia.org/wiki/Centrum_Wiskunde_%26_Informatica) & TU Delft.
+I'm excited to apply my expertise to problems that matter, using appropriate tools - which doesn't always have to mean Generative AI & LLMs :). Still, these technologies are impressive, and my experience with them (generating data, doing RAG, processing text) has been quite positive.
 
-My primary research interests are **hyperparameter optimization** and **synthetic data**. I believe that leveraging **evolutionary algorithms** for non-differentiable machine learning problems can be impactful, as, in addition to not requiring gradients, most evolutionary algorihtms are trivial to parallelize & scale, making them fully compatible with [Sutton’s Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html).
-
-Life-wise I’m into fantasy, hiking, and discussing weird ideas.
+My hobbies include reading (mostly non-fiction and fantasy), hiking, equirhythmic translation,  and discussing weird ideas. Always happy to chat about these topics, drop me a line via the header links!
 
 <div style="clear: both; margin-top: 2rem;"></div>
