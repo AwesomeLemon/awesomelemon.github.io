@@ -3,9 +3,14 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+list_title: Blog
 ---
 
-![me](me.jpg){: width="170" align="left" style="padding: 20px;"}
+<style>
+  .post-list-heading { text-align: center; }
+</style>
+
+![Alexander Chebykin](me.jpg){: width="170" style="float: left; margin: 0 20px 10px 0; border-radius: 10px;"}
 
 Hi! I'm a Machine Learning Scientist finishing a PhD on Hyperparameter optimization for Deep Learning in the [Evolutionary Intelligence](https://www.cwi.nl/en/groups/evolutionary-intelligence/) group at [CWI](https://en.wikipedia.org/wiki/Centrum_Wiskunde_%26_Informatica) & TU Delft.
 
@@ -13,5 +18,4 @@ My primary research interests are **hyperparameter optimization** and **syntheti
 
 Life-wise I’m into fantasy, hiking, and discussing weird ideas.
 
-<div style="clear: both; margin-top: 1rem;"></div>
-
+<div style="clear: both; margin-top: 2rem;"></div>

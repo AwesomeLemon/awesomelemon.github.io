@@ -9,9 +9,23 @@
     display: inline-block;
     width: 35px;
     height: 35px;
-    margin-top: -5px;
+    //margin-top: -5px;
     margin-right: 10px;
     background: url("/lemon30.png") no-repeat center;
     background-size: contain;
-    vertical-align: middle;
+    vertical-align: text-bottom;
+    border-radius: 5px;
 }
+
+/* Tighten header height without changing existing margins */
+.site-header { min-height: 0; }
+
+/* Use flexbox to center title and nav vertically and balance spacing */
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-title { line-height: 1.2; margin: 4px; }
+.site-nav { line-height: 1.2; }

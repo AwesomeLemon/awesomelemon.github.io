@@ -19,7 +19,8 @@ description: ""
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://awesomelemon.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: a__chebykin
-github_username:  AwesomeLemon
+github_username: AwesomeLemon
+linkedin_username: achebykin
 
 # Build settings
 markdown: kramdown
@@ -29,6 +30,10 @@ plugins:
 show_excerpts: true
 excerpt_separator: "<!--more-->"
 
+# Limit header navigation to specific pages (prevents AGENTS.md from showing up)
+header_pages:
+  - index.md
+
 # minima:
 #   skin: dark
 
@@ -37,8 +42,6 @@ excerpt_separator: "<!--more-->"
 # Leave shortname blank to disable comments site-wide.
 # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
 # shortname: awesomelemon-github-io
-
-url: https://awesomelemon.github.io/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

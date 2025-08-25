@@ -4,6 +4,7 @@
 
 - Read files before modifying them. The human developers can edit the files in-between the agent edits. 
 - Do not revert the changes made by the human developers since you last read the file (unless asked to do so)
+- Never commit or push without explicit user approval. Propose changes and wait for confirmation before running any git commit/push.
 
 ## Project Structure & Module Organization
 - Source: Markdown pages at `index.md`, `about.md`, and posts in `_posts/` (use `YYYY-MM-DD-title.md`).
@@ -42,4 +43,3 @@
 - Keep `_config.yml` authoritative (e.g., `url`, `baseurl`, analytics toggles); test with production builds.
 - Preserve `CNAME` for the custom domain.
 - Do not commit secrets; environment-specific values should come from repository settings, not files.
-
