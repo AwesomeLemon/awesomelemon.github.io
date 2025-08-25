@@ -10,7 +10,7 @@
     width: 35px;
     height: 35px;
     //margin-top: -5px;
-    margin-right: 10px;
+    margin-right: 16px;
     background: url("/lemon30.png") no-repeat center;
     background-size: contain;
     vertical-align: text-bottom;
@@ -20,12 +20,29 @@
 /* Tighten header height without changing existing margins */
 .site-header { min-height: 0; }
 
+/* Header social icons: show icons only, inline in header */
+.site-header .social-media-list {
+  display: inline-flex;
+  gap: 6px;
+  margin: 0 0 0 16px; // space between name and icons
+  padding: 0;
+  list-style: none;
+  vertical-align: middle;
+}
+.site-header .social-media-list li + li { padding-top: 0; }
+.site-header .social-media-list li { padding: 0; }
+.site-header .social-media-list a { display: inline-block; vertical-align: text-bottom; line-height: 1.2; }
+.site-header .social-media-list .username { display: none; }
+.site-header .social-media-list .svg-icon { width: 20px; height: 20px; padding-right: 0; display: inline-block; vertical-align: text-bottom; }
+.site-header .github-link a { display: inline-flex; align-items: center; }
+.site-header .social-media-list a:hover .username { text-decoration: none; }
+
 /* Use flexbox to center title and nav vertically and balance spacing */
 .site-header .wrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: baseline; /* align to text baseline for even top/bottom space */
+  justify-content: flex-start;
 }
 
 .site-title { line-height: 1.2; margin: 4px; }
-.site-nav { line-height: 1.2; }
+.site-nav { line-height: 1.2; display: flex; align-items: baseline; margin-left: auto; }

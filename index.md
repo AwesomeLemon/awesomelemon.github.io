@@ -12,7 +12,7 @@ list_title: Blog
 
 ![Alexander Chebykin](me.jpg){: width="170" style="float: left; margin: 0 20px 10px 0; border-radius: 10px;"}
 
-Hi! I'm a Machine Learning Scientist finishing a PhD on Hyperparameter optimization for Deep Learning in the [Evolutionary Intelligence](https://www.cwi.nl/en/groups/evolutionary-intelligence/) group at [CWI](https://en.wikipedia.org/wiki/Centrum_Wiskunde_%26_Informatica) & TU Delft.
+Hi! I'm a machine learning scientist finishing a PhD on Hyperparameter optimization for Deep Learning in the [Evolutionary Intelligence](https://www.cwi.nl/en/groups/evolutionary-intelligence/) group at [CWI](https://en.wikipedia.org/wiki/Centrum_Wiskunde_%26_Informatica) & TU Delft.
 
 My primary research interests are **hyperparameter optimization** and **synthetic data**. I believe that leveraging **evolutionary algorithms** for non-differentiable machine learning problems can be impactful, as, in addition to not requiring gradients, most evolutionary algorihtms are trivial to parallelize & scale, making them fully compatible with [Sutton’s Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html).
 
