@@ -95,3 +95,34 @@ a:hover, a:focus {
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
+
+/* Mobile header layout: title on first line, icons on second */
+@include media-query($on-palm) {
+  .site-header .wrapper {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .site-title {
+    white-space: nowrap;
+    font-size: 22px; /* avoid wrap while fitting small screens */
+  }
+
+  .site-header .social-media-list {
+    display: flex;
+    order: 2;
+    flex-basis: 100%;
+    margin: 4px 0 0 0;
+    padding-right: 0; /* burger hidden on mobile */
+    padding-left: 56px;  /* align under title text (logo + gap) */
+    justify-content: flex-start;
+  }
+
+  /* Hide burger/nav on mobile without removing functionality */
+  .site-nav,
+  .site-nav label[for="nav-trigger"],
+  .site-nav .menu-icon,
+  .site-nav #nav-trigger {
+    display: none !important;
+  }
+}
