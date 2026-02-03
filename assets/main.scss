@@ -263,6 +263,12 @@ table td { border-color: var(--border); }
   filter: brightness(.85) contrast(1.05) saturate(.9);
 }
 
+:root[data-theme="dark"] img.needs-light-bg {
+  background: #f8f6f0;
+  padding: 6px;
+  border-radius: 8px;
+}
+
 :root[data-theme="dark"] .highlight .err,
 :root[data-theme="dark"] .highlight .gd,
 :root[data-theme="dark"] .highlight .gi {
@@ -272,6 +278,14 @@ table td { border-color: var(--border); }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) img:not([src*="me.jpg"]) {
     filter: brightness(.85) contrast(1.05) saturate(.9);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) img.needs-light-bg {
+    background: #f8f6f0;
+    padding: 6px;
+    border-radius: 8px;
   }
 }
 

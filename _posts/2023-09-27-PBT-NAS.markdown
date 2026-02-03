@@ -30,7 +30,7 @@ Well, you can always sample them randomly, but that might be quite a disruption 
 What if we do not randomly perturb the architecture but create it as a mix of two architectures from the population? Then the weights can be copied from the parent architectures!
 
 {:refdef: style="text-align: center;"}
-![shrink-perturb](/pics/pbtnas/shrink_perturb_spectrum.png){: style="width: 75%;" }
+![shrink-perturb](/pics/pbtnas/shrink_perturb_spectrum.png){: style="width: 75%;" .needs-light-bg }
 {: refdef}
 
 This is where [shrink-perturb](https://arxiv.org/abs/1910.08475) comes in. It was introduced in online learning to solve a specific problem: once new data arrives, continuing training is worse than retraining from scratch using all the data. Shrink-perturb modifies weights by shrinking (multiplying by a constant **λ**) and perturbing them (adding noise multiplied by a constant **γ**).
@@ -42,7 +42,7 @@ Two networks can be mixed to create a new architecture by randomly copying layer
 The ideas of exploring architectures via mixing and adapting weights with shrink-perturb are the key ideas of PBT-NAS. Exploring architecture online  in this way allows PBT-NAS to be efficient, while avoiding restrictions brought by weight sharing.
 
 {:refdef: style="text-align: center;"}
-![PBT-NAS](/pics/pbtnas/PBT_NAS_scheme.png){: style="width: 100%;" }
+![PBT-NAS](/pics/pbtnas/PBT_NAS_scheme.png){: style="width: 100%;" .needs-light-bg }
 {: refdef}
 
 # Experiment setup
