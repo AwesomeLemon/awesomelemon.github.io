@@ -1,0 +1,76 @@
+{%- assign left_title = include.left_title | default: "Original" -%}
+{%- assign right_title = include.right_title | default: "Translation" -%}
+
+{%- assign original_text = include.original | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
+{%- assign translation_text = include.translation | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
+
+{%- assign original_lines = original_text | split: '
+' -%}
+{%- assign translation_lines = translation_text | split: '
+' -%}
+
+{%- assign line_count = original_lines.size -%}
+{%- if translation_lines.size > line_count -%}
+  {%- assign line_count = translation_lines.size -%}
+{%- endif -%}
+
+<div class="translation-grid-wrap">
+  <div class="translation-grid" role="table" aria-label="{{ left_title }} and {{ right_title }} side by side">
+    <div class="translation-grid__head" role="columnheader">{{ left_title }}</div>
+    <div class="translation-grid__head" role="columnheader">{{ right_title }}</div>
+
+    {%- if line_count > 0 -%}
+      {%- assign last_index = line_count | minus: 1 -%}
+      {%- for i in (0..last_index) -%}
+        {%- assign original_line = original_lines[i] | default: "" -%}
+        {%- assign translation_line = translation_lines[i] | default: "" -%}
+        {%- assign original_trim = original_line | strip -%}
+        {%- assign translation_trim = translation_line | strip -%}
+
+        {%- if original_trim == "" and translation_trim == "" -%}
+          <div class="translation-grid__line translation-grid__line--break" role="cell" data-row="{{ i }}" aria-hidden="true">&nbsp;</div>
+          <div class="translation-grid__line translation-grid__line--break" role="cell" data-row="{{ i }}" aria-hidden="true">&nbsp;</div>
+        {%- else -%}
+          <div class="translation-grid__line" role="cell" data-row="{{ i }}">
+            {%- if original_trim == "" -%}&nbsp;{%- else -%}{{ original_line | escape }}{%- endif -%}
+          </div>
+          <div class="translation-grid__line" role="cell" data-row="{{ i }}">
+            {%- if translation_trim == "" -%}&nbsp;{%- else -%}{{ translation_line | escape }}{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    if (window.__translationGridHoverInit) return;
+    window.__translationGridHoverInit = true;
+
+    function setHoveredRow(grid, row) {
+      var lines = grid.querySelectorAll(".translation-grid__line[data-row]");
+      lines.forEach(function (line) {
+        line.classList.toggle("is-hovered", row && line.getAttribute("data-row") === row);
+      });
+    }
+
+    document.addEventListener("mouseover", function (event) {
+      var line = event.target.closest(".translation-grid__line[data-row]");
+      if (!line) return;
+      var grid = line.closest(".translation-grid");
+      if (!grid) return;
+      setHoveredRow(grid, line.getAttribute("data-row"));
+    });
+
+    document.addEventListener("mouseout", function (event) {
+      var line = event.target.closest(".translation-grid__line[data-row]");
+      if (!line) return;
+      var grid = line.closest(".translation-grid");
+      if (!grid) return;
+      if (!grid.contains(event.relatedTarget)) {
+        setHoveredRow(grid, null);
+      }
+    });
+  })();
+</script>

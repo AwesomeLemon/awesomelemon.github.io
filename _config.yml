@@ -31,6 +31,11 @@ plugins:
 show_excerpts: true
 excerpt_separator: "<!--more-->"
 
+collections:
+  translations:
+    output: true
+    permalink: /translations/:name/
+
 # Limit header navigation to specific pages (prevents AGENTS.md from showing up)
 header_pages:
   - index.md

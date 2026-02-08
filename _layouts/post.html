@@ -1,0 +1,80 @@
+---
+layout: default
+---
+<article class="post h-entry{% if page.wide %} post--wide{% endif %}"{% if page.wide_max %} style="--post-wide-max: {{ page.wide_max }};"{% endif %} itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    {%- assign post_title = page.title | default: "" | strip -%}
+    {%- assign title_slug = post_title | slugify -%}
+    {%- assign page_slug = page.slug | default: page.name | replace: ".md", "" | replace: ".markdown", "" | slugify -%}
+    {%- if page.collection == "translations" -%}
+      {%- if post_title == "" or title_slug == page_slug -%}
+        {%- assign fallback_artist = page.artist | default: "Unknown artist" -%}
+        {%- assign fallback_song = page.song | default: "Untitled" -%}
+        {%- assign post_title = fallback_artist | append: " - " | append: fallback_song | append: " - поэтический перевод" -%}
+      {%- endif -%}
+    {%- endif -%}
+    {%- assign location_text = page.location | default: "" | strip -%}
+    {%- assign date_pretty_text = page.date_pretty | default: "" | strip -%}
+    {%- if page.collection == "translations" and date_pretty_text == "" -%}
+      {%- assign month_num = page.date | date: "%-m" -%}
+      {%- assign month_ru = "" -%}
+      {%- assign year_text = page.date | date: "%Y" -%}
+      {%- case month_num -%}
+        {%- when "1" -%}{%- assign month_ru = "Январь" -%}
+        {%- when "2" -%}{%- assign month_ru = "Февраль" -%}
+        {%- when "3" -%}{%- assign month_ru = "Март" -%}
+        {%- when "4" -%}{%- assign month_ru = "Апрель" -%}
+        {%- when "5" -%}{%- assign month_ru = "Май" -%}
+        {%- when "6" -%}{%- assign month_ru = "Июнь" -%}
+        {%- when "7" -%}{%- assign month_ru = "Июль" -%}
+        {%- when "8" -%}{%- assign month_ru = "Август" -%}
+        {%- when "9" -%}{%- assign month_ru = "Сентябрь" -%}
+        {%- when "10" -%}{%- assign month_ru = "Октябрь" -%}
+        {%- when "11" -%}{%- assign month_ru = "Ноябрь" -%}
+        {%- when "12" -%}{%- assign month_ru = "Декабрь" -%}
+      {%- endcase -%}
+      {%- assign date_pretty_text = month_ru | append: " " | append: year_text -%}
+    {%- endif -%}
+    <h1 class="post-title p-name" itemprop="name headline">{{ post_title | escape }}</h1>
+    {%- if page.collection == "translations" -%}
+      {%- if page.author -%}
+        <p class="post-meta">
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+        </p>
+      {%- endif -%}
+    {%- else -%}
+      <p class="post-meta">
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.author -%}
+          • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+  {%- if page.collection == "translations" -%}
+    {%- if location_text != "" or date_pretty_text != "" -%}
+      <div class="translation-signature">
+        {%- if location_text != "" -%}
+          <div class="translation-signature__line">{{ location_text | escape }}</div>
+        {%- endif -%}
+        {%- if date_pretty_text != "" -%}
+          <div class="translation-signature__line">{{ date_pretty_text | escape }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

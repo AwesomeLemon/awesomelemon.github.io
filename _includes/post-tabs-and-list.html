@@ -1,5 +1,5 @@
-{%- assign blog_posts = site.posts | where_exp: "post", "post.content_type != 'translation'" -%}
-{%- assign translation_posts = site.posts | where: "content_type", "translation" -%}
+{%- assign blog_posts = site.posts -%}
+{%- assign translation_posts = site.translations | sort: "date" | reverse -%}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 {%- assign default_view = include.default_view | default: "blog" -%}
 
@@ -33,18 +33,41 @@
 
   <section class="content-panel" id="translations" data-view-panel="translations">
     {%- if translation_posts and translation_posts.size > 0 -%}
-      <ul class="post-list">
+      <ul class="translations-table" role="list">
         {%- for post in translation_posts -%}
-          <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h3>
-              <a class="post-link" href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-              </a>
-            </h3>
-            {%- if site.show_excerpts -%}
-              {{ post.excerpt }}
-            {%- endif -%}
+          {%- assign source_lang = post.source_lang | default: post.from_lang | default: "en" | downcase -%}
+          {%- assign target_lang = post.target_lang | default: post.to_lang | default: "ru" | downcase -%}
+          {%- assign non_ru_lang = source_lang -%}
+          {%- if source_lang == "ru" -%}
+            {%- assign non_ru_lang = target_lang -%}
+          {%- endif -%}
+          {%- assign non_ru_flag = "🌐" -%}
+          {%- case non_ru_lang -%}
+            {%- when "en" -%}{%- assign non_ru_flag = "🇬🇧" -%}
+            {%- when "de" -%}{%- assign non_ru_flag = "🇩🇪" -%}
+            {%- when "nl" -%}{%- assign non_ru_flag = "🇳🇱" -%}
+          {%- endcase -%}
+
+          {%- assign artist = post.artist | default: post.original_artist | default: "—" -%}
+          {%- assign song = post.song | default: post.original_title | default: post.title -%}
+          {%- assign translated_song = post.translated_title | default: post.title -%}
+          {%- assign is_starred = post.starred | default: false -%}
+
+          <li class="translations-row">
+            <a class="translations-row__link" href="{{ post.url | relative_url }}">
+              <span class="translations-col translations-col--date">{{ post.date | date: "%Y-%m" }}</span>
+              <span class="translations-col translations-col--starred">{% if is_starred %}★{% endif %}</span>
+              <span class="translations-col translations-col--artist">{{ artist | escape }}</span>
+              <span class="translations-col translations-col--song">{{ song | escape }}</span>
+              <span class="translations-col translations-col--direction">
+                {%- if source_lang == "ru" -%}
+                  → {{ non_ru_flag }}
+                {%- else -%}
+                  {{ non_ru_flag }} →
+                {%- endif -%}
+              </span>
+              <span class="translations-col translations-col--translated">{{ translated_song | escape }}</span>
+            </a>
           </li>
         {%- endfor -%}
       </ul>
