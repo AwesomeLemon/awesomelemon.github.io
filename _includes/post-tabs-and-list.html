@@ -1,0 +1,114 @@
+{%- assign blog_posts = site.posts | where_exp: "post", "post.content_type != 'translation'" -%}
+{%- assign translation_posts = site.posts | where: "content_type", "translation" -%}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- assign default_view = include.default_view | default: "blog" -%}
+
+<section class="content-listing content-switcher" data-content-switcher data-default-view="{{ default_view }}">
+  <nav class="content-tabs" aria-label="Content type">
+    <a class="content-tab" href="#blog" data-view-tab="blog">Blog</a>
+    <a class="content-tab" href="#translations" data-view-tab="translations">Translations</a>
+  </nav>
+
+  <section class="content-panel" id="blog" data-view-panel="blog">
+    {%- if blog_posts and blog_posts.size > 0 -%}
+      <ul class="post-list">
+        {%- for post in blog_posts -%}
+          <li>
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+              {{ post.excerpt }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="post-empty">No posts in this section yet.</p>
+    {%- endif -%}
+  </section>
+
+  <section class="content-panel" id="translations" data-view-panel="translations">
+    {%- if translation_posts and translation_posts.size > 0 -%}
+      <ul class="post-list">
+        {%- for post in translation_posts -%}
+          <li>
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+              {{ post.excerpt }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="post-empty">No posts in this section yet.</p>
+    {%- endif -%}
+  </section>
+</section>
+
+<script>
+  (function () {
+    function normalizeView(hash, fallback) {
+      var view = (hash || "").replace(/^#/, "");
+      if (view === "blog" || view === "translations") return view;
+      return fallback;
+    }
+
+    function initSwitcher(root) {
+      var tabs = root.querySelectorAll("[data-view-tab]");
+      var panels = root.querySelectorAll("[data-view-panel]");
+      var fallback = root.getAttribute("data-default-view") || "blog";
+      root.classList.add("is-enhanced");
+
+      function activate(view, updateHash) {
+        tabs.forEach(function (tab) {
+          var active = tab.getAttribute("data-view-tab") === view;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach(function (panel) {
+          var active = panel.getAttribute("data-view-panel") === view;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+
+        if (updateHash) {
+          if (window.history && window.history.pushState) {
+            window.history.pushState(null, "", "#" + view);
+          } else {
+            window.location.hash = view;
+          }
+        }
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function (event) {
+          event.preventDefault();
+          var view = tab.getAttribute("data-view-tab");
+          activate(view, true);
+        });
+      });
+
+      window.addEventListener("hashchange", function () {
+        activate(normalizeView(window.location.hash, fallback), false);
+      });
+
+      activate(normalizeView(window.location.hash, fallback), false);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var root = document.querySelector("[data-content-switcher]");
+      if (!root) return;
+      initSwitcher(root);
+    });
+  })();
+</script>

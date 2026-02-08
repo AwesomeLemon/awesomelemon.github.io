@@ -1,16 +1,49 @@
-<script src="https://giscus.app/client.js"
-        data-repo="AwesomeLemon/awesomelemon.github.io"
-        data-repo-id="R_kgDOHodr3Q"
-        data-category="General"
-        data-category-id="DIC_kwDOHodr3c4CuNyd"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+<div class="giscus-root">
+  <script src="https://giscus.app/client.js"
+          data-repo="AwesomeLemon/awesomelemon.github.io"
+          data-repo-id="R_kgDOHodr3Q"
+          data-category="General"
+          data-category-id="DIC_kwDOHodr3c4CuNyd"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+<script>
+  (function () {
+    function syncCurrentGiscusTheme() {
+      if (typeof window.__syncGiscusTheme !== "function") return false;
+      return window.__syncGiscusTheme(
+        typeof window.__getSiteTheme === "function" ? window.__getSiteTheme() : null
+      );
+    }
+
+    function attachToGiscusFrame(root) {
+      var iframe = root.querySelector("iframe.giscus-frame");
+      if (!iframe) return false;
+      syncCurrentGiscusTheme();
+      iframe.addEventListener("load", function () {
+        syncCurrentGiscusTheme();
+      });
+      return true;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var root = document.querySelector(".giscus-root");
+      if (!root) return;
+      if (attachToGiscusFrame(root)) return;
+
+      var observer = new MutationObserver(function () {
+        if (attachToGiscusFrame(root)) observer.disconnect();
+      });
+      observer.observe(root, { childList: true, subtree: true });
+    });
+  })();
 </script>
