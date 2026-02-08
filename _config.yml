@@ -32,6 +32,9 @@ show_excerpts: true
 excerpt_separator: "<!--more-->"
 
 collections:
+  posts_general:
+    output: true
+    permalink: /general/:name/
   translations:
     output: true
     permalink: /translations/:name/

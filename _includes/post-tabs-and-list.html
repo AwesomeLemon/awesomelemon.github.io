@@ -1,17 +1,45 @@
 {%- assign blog_posts = site.posts -%}
+{%- assign general_posts = site.posts_general | sort: "date" | reverse -%}
 {%- assign translation_posts = site.translations | sort: "date" | reverse -%}
-{%- assign default_view = include.default_view | default: "blog" -%}
+{%- assign default_view = include.default_view | default: "blog_technical" -%}
+{%- if default_view == "blog" -%}
+  {%- assign default_view = "blog_technical" -%}
+{%- endif -%}
 
 <section class="content-listing content-switcher" data-content-switcher data-default-view="{{ default_view }}">
   <nav class="content-tabs" aria-label="Content type">
-    <a class="content-tab" href="#blog" data-view-tab="blog">Blog</a>
+    <a class="content-tab" href="#blog_technical" data-view-tab="blog_technical">Blog: technical</a>
+    <a class="content-tab" href="#blog_general" data-view-tab="blog_general">Blog: general</a>
     <a class="content-tab" href="#translations" data-view-tab="translations">Translations</a>
+    <a class="content-tab" href="#facts" data-view-tab="facts">Facts</a>
   </nav>
 
-  <section class="content-panel" id="blog" data-view-panel="blog">
+  <section class="content-panel" id="blog_technical" data-view-panel="blog_technical">
     {%- if blog_posts and blog_posts.size > 0 -%}
       <ul class="post-list">
         {%- for post in blog_posts -%}
+          <li>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+              {{ post.excerpt }}
+            {%- endif -%}
+            <span class="post-meta post-meta--card-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="post-empty">No posts in this section yet.</p>
+    {%- endif -%}
+  </section>
+
+  <section class="content-panel" id="blog_general" data-view-panel="blog_general">
+    {%- if general_posts and general_posts.size > 0 -%}
+      <ul class="post-list">
+        {%- for post in general_posts -%}
           <li>
             <h3>
               <a class="post-link" href="{{ post.url | relative_url }}">
@@ -74,20 +102,31 @@
       <p class="post-empty">No posts in this section yet.</p>
     {%- endif -%}
   </section>
+
+  <section class="content-panel" id="facts" data-view-panel="facts">
+    <ul class="facts-list">
+      <li>Cities where I lived at least a month: St. Petersburg, Cologne, Berlin, Amsterdam, Leiden</li>
+      <li class="facts-item--color">Favorite color: <span class="facts-color-orange">Orange</span></li>
+      <li>What DEFINITELY DID NOT influence my decision to move to 🇳🇱: my favorite color</li>
+      <li>Most steps walked in a day: 35,228</li>
+      <li>An octopus has more neurons in its tentacles than in its brain 🐙</li>
+    </ul>
+  </section>
 </section>
 
 <script>
   (function () {
     function normalizeView(hash, fallback) {
       var view = (hash || "").replace(/^#/, "");
-      if (view === "blog" || view === "translations") return view;
+      if (view === "blog") return "blog_technical";
+      if (view === "blog_technical" || view === "blog_general" || view === "translations" || view === "facts") return view;
       return fallback;
     }
 
     function initSwitcher(root) {
       var tabs = root.querySelectorAll("[data-view-tab]");
       var panels = root.querySelectorAll("[data-view-panel]");
-      var fallback = root.getAttribute("data-default-view") || "blog";
+      var fallback = root.getAttribute("data-default-view") || "blog_technical";
       root.classList.add("is-enhanced");
 
       function activate(view, updateHash) {

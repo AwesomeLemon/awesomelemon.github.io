@@ -169,7 +169,7 @@ button,
 input,
 textarea,
 select {
-  font-family: "Comfortaa", sans-serif;
+  font-family: "Comfortaa", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 }
 
 strong,
@@ -392,6 +392,42 @@ table td { border-color: var(--border); }
   color: var(--muted);
 }
 
+.facts-list {
+  margin-left: 1.2rem;
+}
+
+.facts-list li {
+  margin-bottom: 0.4rem;
+}
+
+.facts-item--color {
+  line-height: 2.2;
+  overflow: visible;
+}
+
+.facts-color-orange {
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 0.16em;
+  padding-bottom: 0.08em;
+  vertical-align: baseline;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    #ffd27a 0%,
+    #ffb347 24%,
+    #ff8c00 50%,
+    #ff6f00 76%,
+    #ff4f00 100%
+  );
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 .translations-table {
   margin: 0;
   margin-left: 0;
@@ -561,6 +597,38 @@ table td { border-color: var(--border); }
     padding-left: 5px;
     padding-right: 5px;
   }
+
+  .content-listing .content-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+
+  .translations-row__link,
+  .translations-row__link:visited {
+    grid-template-columns: 66px 24px max-content minmax(0, 1fr);
+    grid-template-areas:
+      "date . artist artist"
+      "starred . song song"
+      ". . direction translated";
+    row-gap: 2px;
+  }
+
+  .translations-col--date { grid-area: date; }
+  .translations-col--starred { grid-area: starred; justify-self: center; }
+  .translations-col--artist { grid-area: artist; display: block; }
+  .translations-col--artist {
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 35%, transparent);
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+  }
+  .translations-col--song { grid-area: song; }
+  .translations-col--direction {
+    grid-area: direction;
+    justify-self: start;
+    margin-right: 6px;
+  }
+  .translations-col--translated { grid-area: translated; }
 
   .site-header .wrapper {
     flex-wrap: wrap;
