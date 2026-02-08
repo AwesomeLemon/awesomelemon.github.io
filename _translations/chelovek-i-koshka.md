@@ -8,7 +8,7 @@ target_lang: en
 date: 2025-06-01 12:00:00 +0000
 location: Amsterdam
 wide: true
-wide_max: 880px
+wide_max: 940px
 ---
 
 {% capture original %}

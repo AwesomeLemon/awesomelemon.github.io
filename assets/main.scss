@@ -2,6 +2,38 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/assets/fonts/comfortaa/Comfortaa-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/assets/fonts/comfortaa/Comfortaa-500.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/assets/fonts/comfortaa/Comfortaa-600.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/assets/fonts/comfortaa/Comfortaa-700.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 @import "minima";
 
 @media screen and (min-width: 601px) {
@@ -128,6 +160,21 @@
 body {
   background-color: var(--bg);
   color: var(--text);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "Comfortaa", sans-serif;
+}
+
+strong,
+b {
+  font-weight: 700;
 }
 
 html {
@@ -323,6 +370,13 @@ table td { border-color: var(--border); }
   border-color: color-mix(in srgb, var(--link-underline) 20%, transparent);
   background: color-mix(in srgb, var(--link-underline) 20%, transparent);
   font-weight: 600;
+}
+
+.content-listing .post-link,
+.content-listing .post-link:visited,
+.content-listing .post-link:hover,
+.content-listing .post-link:focus-visible {
+  text-decoration: none;
 }
 
 .content-switcher.is-enhanced .content-panel {

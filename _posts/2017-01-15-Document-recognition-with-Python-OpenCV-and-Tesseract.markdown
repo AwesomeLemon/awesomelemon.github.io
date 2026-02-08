@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Document recognition with Python, OpenCV and Tesseract"
+title:  "Document recognition with Python, OpenCV, and Tesseract"
 date:   2017-01-15 15:49:38 +0200
 tags: opencv python tesseract ocr
 comments: true
