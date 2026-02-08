@@ -1,6 +1,5 @@
 {%- assign blog_posts = site.posts -%}
 {%- assign translation_posts = site.translations | sort: "date" | reverse -%}
-{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 {%- assign default_view = include.default_view | default: "blog" -%}
 
 <section class="content-listing content-switcher" data-content-switcher data-default-view="{{ default_view }}">
@@ -14,7 +13,6 @@
       <ul class="post-list">
         {%- for post in blog_posts -%}
           <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
             <h3>
               <a class="post-link" href="{{ post.url | relative_url }}">
                 {{ post.title | escape }}
@@ -23,6 +21,7 @@
             {%- if site.show_excerpts -%}
               {{ post.excerpt }}
             {%- endif -%}
+            <span class="post-meta post-meta--card-date">{{ post.date | date: "%Y-%m-%d" }}</span>
           </li>
         {%- endfor -%}
       </ul>

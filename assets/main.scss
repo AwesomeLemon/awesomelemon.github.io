@@ -235,7 +235,7 @@ table td { border-color: var(--border); }
   padding: 16px 20px;
   border: 1px solid var(--border);
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  margin-bottom: 2rem;
+  margin-bottom: 1.0rem;
 }
 .card::after { content: ""; display: table; clear: both; }
 
@@ -270,9 +270,22 @@ table td { border-color: var(--border); }
 .content-listing .post-list > li {
   background: var(--card-bg);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 8px 20px;
   border: 1px solid var(--border);
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.content-listing .post-list > li .post-meta--card-date {
+  margin-top: auto;
+  align-self: flex-end;
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+
+.content-listing .post-list > li p {
+  margin-bottom: 6px;
 }
 
 .content-tabs {
@@ -408,13 +421,13 @@ table td { border-color: var(--border); }
   border-radius: 10px;
 }
 
-.translation-signature {
+.date-footer {
   margin-top: 1.4rem;
   text-align: right;
   color: var(--muted);
 }
 
-.translation-signature__line {
+.date-footer__line {
   margin: 0;
 }
 
