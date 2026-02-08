@@ -16,9 +16,6 @@
 
 <div class="translation-grid-wrap">
   <div class="translation-grid" role="table" aria-label="{{ left_title }} and {{ right_title }} side by side">
-    <div class="translation-grid__head" role="columnheader">{{ left_title }}</div>
-    <div class="translation-grid__head" role="columnheader">{{ right_title }}</div>
-
     {%- if line_count > 0 -%}
       {%- assign last_index = line_count | minus: 1 -%}
       {%- for i in (0..last_index) -%}

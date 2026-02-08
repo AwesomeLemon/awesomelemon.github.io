@@ -13,6 +13,8 @@ wide_max: 800px
 
 Первая песня, которую я перевёл целиком. Перенося с [Амальгамы](https://www.amalgama-lab.com/songs/t/tall_like_tyrion/the_dornishman_s_wife.html) сюда, не удержался - попробовал улучшить. [Книжный перевод](https://7kingdoms.ru/wiki/%D0%94%D0%BE%D1%80%D0%BD%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F_%D0%B6%D0%B5%D0%BD%D0%B0) всё ещё сильно складнее, но дальше от оригинала.
 
+<div class="horizontal-divider" aria-hidden="true"></div>
+
 {% capture original %}
 The Dornishman's wife was as fair as the sun
 And her kisses were warmer than spring.
