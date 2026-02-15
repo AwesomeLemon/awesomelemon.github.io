@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "To Be Greedy, or Not to Be - That Is the Question for Population Based Training Variants [TMLR]"
+slug: pbt-greedy-or-not
 date:   2025-06-02 13:45:00 +0200
 comments: true
+redirect_from:
+  - /2025/06/02/to-be-greedy-or-not-to-be.html
 ---
 
 **TL;DR** Bayesian PBTs optimize the greedy objective more effectively than non-Bayesian PBTs, this can be good or bad (depends on the task & hyperparams) \| [Paper](https://openreview.net/forum?id=3qmnxysNbi) \| [Code](https://github.com/AwesomeLemon/PBT-Zoo)

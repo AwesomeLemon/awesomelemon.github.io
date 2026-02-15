@@ -1,9 +1,12 @@
 ---
 layout: post
 title:  "Document recognition with Python, OpenCV, and Tesseract"
+slug: doc-text-recognize
 date:   2017-01-15 15:49:38 +0200
 tags: opencv python tesseract ocr
 comments: true
+redirect_from:
+  - /2017/01/15/Document-recognition-with-Python-OpenCV-and-Tesseract.html
 ---
 
 Recently I’ve conducted my own little experiment with the document recognition technology: I’ve successfully went from an image to the recognized editable text.<!--more-->

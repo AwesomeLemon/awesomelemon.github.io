@@ -1,9 +1,12 @@
 ---
 layout: post
 title:  "ENCAS: Search cascades of neural networks in any model pool"
+slug: evo-cascade-search
 date:   2022-07-12 17:58:38 +0200
 # tags: opencv python tesseract ocr
 comments: true
+redirect_from:
+  - /2022/07/12/Evolutionary-neural-cascade-search-across-supernetworks.html
 ---
 
 _Based on our paper ["Evolutionary Neural Cascade Search across Supernetworks"](https://arxiv.org/abs/2203.04011) (Best Paper award @ GECCO 2022)_

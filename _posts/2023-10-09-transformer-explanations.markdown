@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "Transformer explanations: a collection"
+slug: transformer-explanations
 date:   2023-10-09 07:58:38 +0200
 comments: true
+redirect_from:
+  - /2023/10/09/transformer-explanations.html
 ---
 
 Transformer is a powerful architecture that can be difficult to understand. There are many great explanations on the web, each approaching the subject in a different way. Here I link the explanations I liked, and mention who I believe the target audience is for each one.

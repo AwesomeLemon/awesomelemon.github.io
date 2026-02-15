@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "PBT-NAS: mix architectures during training"
+slug: pbt-nas
 date:   2023-09-27 17:58:38 +0200
 comments: true
+redirect_from:
+  - /2023/09/27/PBT-NAS.html
 ---
 
 _Based on our paper ["Shrink-Perturb Improves Architecture Mixing during Population Based Training for Neural Architecture Search"](https://arxiv.org/abs/2307.15621) (ECAI 2023)_

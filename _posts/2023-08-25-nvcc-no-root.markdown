@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "Install nvcc without root"
+slug: nvcc-no-root
 date:   2023-08-25 17:58:38 +0200
 comments: true
+redirect_from:
+  - /2023/08/25/nvcc-no-root.html
 ---
 I needed to install ``nvcc`` on our group server, where I lack root privileges. I found a nice [guide](https://github.com/pyg-team/pytorch_geometric/issues/392#issuecomment-503335625), in this post I will slightly expand on it by explicitly mentioning every step I had to take.<!--more--> Hopefully this will make life easier for future-me and for my colleagues :)
 
