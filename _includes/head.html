@@ -12,7 +12,27 @@
       } catch (e) {}
     })();
   </script>
-  {%- seo -%}
+  {%- assign page_title_text = page.title | default: "" | strip -%}
+  {%- assign page_title_slug = page_title_text | slugify -%}
+  {%- assign page_slug = page.slug | default: page.name | replace: ".md", "" | replace: ".markdown", "" | slugify -%}
+  {%- assign use_translation_title_fallback = false -%}
+  {%- if page.collection == "translations" and (page_title_text == "" or page_title_slug == page_slug) -%}
+    {%- assign use_translation_title_fallback = true -%}
+  {%- endif -%}
+  {%- if use_translation_title_fallback -%}
+    {%- assign seo_artist = page.artist | default: "" | strip -%}
+    {%- assign seo_song = page.song | default: "" | strip -%}
+    {%- assign seo_fallback_title = seo_song -%}
+    {%- if seo_artist != "" and seo_song != "" -%}
+      {%- assign seo_fallback_title = seo_artist | append: " - " | append: seo_song -%}
+    {%- elsif seo_artist != "" -%}
+      {%- assign seo_fallback_title = seo_artist -%}
+    {%- endif -%}
+    <title>{{ seo_fallback_title | escape }} | {{ site.title | escape }}</title>
+    {%- seo title=false -%}
+  {%- else -%}
+    {%- seo -%}
+  {%- endif -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}

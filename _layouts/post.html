@@ -7,10 +7,11 @@ layout: default
     {%- assign post_title = page.title | default: "" | strip -%}
     {%- assign title_slug = post_title | slugify -%}
     {%- assign page_slug = page.slug | default: page.name | replace: ".md", "" | replace: ".markdown", "" | slugify -%}
+    {%- assign fallback_artist = page.artist | default: "Unknown artist" -%}
+    {%- assign fallback_song = page.song | default: "Untitled" -%}
+    {%- assign translation_link = page.link | default: "" | strip -%}
     {%- if page.collection == "translations" -%}
       {%- if post_title == "" or title_slug == page_slug -%}
-        {%- assign fallback_artist = page.artist | default: "Unknown artist" -%}
-        {%- assign fallback_song = page.song | default: "Untitled" -%}
         {%- assign post_title = fallback_artist | append: " - " | append: fallback_song | append: " - поэтический перевод" -%}
       {%- endif -%}
     {%- endif -%}
@@ -80,7 +81,15 @@ layout: default
       {%- assign content_body = content | split: inline_comments_marker | first -%}
       {%- assign inline_comments_block = content | remove_first: content_body -%}
     {%- endif -%}
-    <h1 class="post-title p-name" itemprop="name headline">{{ post_title | escape }}</h1>
+    <h1 class="post-title p-name" itemprop="name headline">
+      {%- if page.collection == "translations" and translation_link != "" -%}
+        {{ fallback_artist | escape }} -
+        <a href="{{ translation_link | escape }}">{{ fallback_song | escape }}</a>
+        - поэтический перевод
+      {%- else -%}
+        {{ post_title | escape }}
+      {%- endif -%}
+    </h1>
     {%- if page.collection == "translations" -%}
       {%- if page.author -%}
         <p class="post-meta">
