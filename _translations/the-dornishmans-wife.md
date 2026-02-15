@@ -2,6 +2,7 @@
 layout: post
 artist: "Tall like Tyrion"
 song: "The Dornishman's Wife"
+link: https://youtu.be/vrJoAy6-or0
 translated_title: "Жена дорнийца"
 source_lang: en
 target_lang: ru

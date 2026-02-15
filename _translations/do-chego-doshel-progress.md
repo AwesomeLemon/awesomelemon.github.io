@@ -2,6 +2,7 @@
 layout: post
 artist: "Юрий Энтин"
 song: "До чего дошёл прогресс"
+link: https://youtu.be/KMo7aKotDoo
 translated_title: "Look at All That Progress Bore"
 source_lang: ru
 target_lang: en

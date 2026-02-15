@@ -2,6 +2,7 @@
 layout: post
 artist: "Heidevolk"
 song: "Yngwaz' Zonen"
+link: https://youtu.be/0aL-vX7xYrE
 translated_title: "Сыны Ингвы"
 source_lang: nl
 target_lang: ru

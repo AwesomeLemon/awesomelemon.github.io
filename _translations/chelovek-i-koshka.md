@@ -2,6 +2,7 @@
 layout: post
 artist: "Ноль"
 song: "Человек и кошка"
+link: https://youtu.be/0m2LXBgrEOg
 translated_title: "A Kitty and a Person"
 source_lang: ru
 target_lang: en
