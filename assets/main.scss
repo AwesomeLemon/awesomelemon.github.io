@@ -335,6 +335,22 @@ table td { border-color: var(--border); }
   margin-bottom: 6px;
 }
 
+.content-listing .post-list > li figure {
+  margin-bottom: 6px;
+}
+
+.content-listing .post-list > li figure img {
+  border-radius: 10px;
+}
+
+.image-pair {
+  min-width: 0;
+}
+
+.image-pair > img {
+  min-width: 0;
+}
+
 .content-tabs {
   display: inline-flex;
   gap: 8px;
@@ -596,6 +612,10 @@ table td { border-color: var(--border); }
   .content-listing .post-list > li {
     padding-left: 5px;
     padding-right: 5px;
+  }
+
+  .image-pair {
+    gap: 8px !important;
   }
 
   .content-listing .content-tabs {
