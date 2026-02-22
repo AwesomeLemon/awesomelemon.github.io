@@ -10,7 +10,7 @@ date: 2023-11-24 12:00:00 +0000
 location: Amsterdam
 starred: true
 wide: true
-wide_max: 600px
+wide_max: 580px
 ---
 
 {% capture original %}
