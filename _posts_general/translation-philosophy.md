@@ -2,7 +2,7 @@
 layout: post
 title:  "Translation trade-offs"
 slug: translation-philosophy
-date: 2026-02-15 12:00:00 +0000
+date: 2026-03-08
 comments: true
 excerpt: |
   <figure>
@@ -15,9 +15,9 @@ excerpt: |
 
 # 1. Translation?
 
-Perfect translation is generally impossible. Words for the same object, feeling, or process have slightly different connotations, tastes, and textures. Different grammars lead to different rhythms. Above all, the mindset of a native speaker of one language cannot be directly mapped to that of another.
+Perfect translation is impossible. Words for the same object, feeling, or process have slightly different connotations, melodies, and textures. Different grammars lead to different rhythms. Above all, the mindset of a native speaker of one language cannot be directly mapped to that of another.
 
-English "bread" is not German "Brot". 
+English "bread" is not German „Brot“. 
 
 <figure>
   <div class="image-pair" style="display: flex; gap: 12px; align-items: stretch;">
@@ -46,21 +46,52 @@ The choices are especially difficult in poetic translation, where the meter and 
 
 The bounds are illusory, of course. If our translator values precision above all else, the meter can be broken and the rhymes can be ignored.
 
-Each translator decides themselves. Here, I want to make my priorities explicit, both to guide me and to let you, dear reader, know what to expect.
+Each translator decides themselves. Here, I want to make my priorities explicit, both to allow me to be better understand them and to let you, dear reader, know what to expect from my translations.
 
 # 3. Dimensions
 
-specifically, for translating songs & poems
+Along which dimensions can trade-offs be made?
 
-- fidelity to the spirit of the original
-- fidelity to the letter of the original
-- meter: same? can be sung in the same way?
-- rhymes: do they exist? are they good in terms of sounds? are they good in the sense of being non-trivial?
-- could a native speaker have written the translated song?
+#### Spirit
 
-# 4. Versions
+For me, **fidelity to the spirit of the original** is paramount. A tragedy must not become farce, nor a farce - a tragedy. Word choices matter - an imprecisely chosen word that may technically have the same translation in the dictionary can be very ill-fitting to the context, breaking the spell that the author casts. I aim to never allow this, no matter what else must be sacrificed.
 
-- Fighting perfectionism.
-- looking with fresh eyes months/years later
-- getting better at my craft
-- for my life history, translations have dates, otherwise they are timeless. Putting a date is a tradeoff. As gwern said, publishing non-news is not one-and-done
+#### Meaning
+
+What can be sacrificed, then? Let's start with what translators who are poets themselves sacrifice most often but I consider only a little less vital than the spirit - the **fidelity to the meaning of the original**. I find it good and proper to faithfully translate what the author wrote and to use metaphors and turns of phrases close to those of the original, even if this results in worse rhymes and meter. 
+
+Translators who are poets often take huge liberties with the text in order to arrive at a poem that scans well. [The  Gipsy Trail](https://www.kiplingsociety.co.uk/poem/poems_gipsytrail.htm) of Kipling has a nice-sounding [Russian translation](https://www.askbooka.ru/stihi/redyard-kipling/za-cyganskoy-zvezdoy.html), in which, nonetheless, the meaning wildly diverges by the **third line**! A translation of a poem by another poet is often akin to movie adaptation of a book, with changes upon changes upon changes. The result can be enjoyed on its own, but not side by side with the original (at least, not by me).
+
+#### Meter
+
+Then we have the **metrical foot**, the sequence of stressed and unstressed syllables in a line. Important to get right, but liberties with extra/missing syllables could be taken - especially when translating songs, since they can be sung to the same melody as long as the meter is close enough.
+
+#### Rhymes
+
+**Rhymes** are quite important for poetry (or, at least, the poetry I enjoy - fight me, post-modernists). Still, I often cannot find a rhyme that is both technically perfect and allows the spirit & the meaning to be preserved. If so, I go for rhymes that are trivial (e.g., rhyming verbs in Russian is super easy and therefore unsatisfying) or "bad" (where words don't sound too much alike; of the Geralt of Rivia [it was said](https://en.wikipedia.org/wiki/Sword_of_Destiny) that he "can only rhyme “rear” with “beer”" (in the Russian translation, "попа и жопа" [were used](https://www.livelib.ru/quote/114727-vedmak-mech-prednaznacheniya-andzhej-sapkovskij), which is objectively much funnier)). This ain't pretty, but it can be prettier than the alternatives.
+
+#### Naturalness
+
+Finally, an interesting dimension I defined for myself is **"Could a native speaker have written the translated song"?** Some translations are clearly translations, and that is fine. However, a perfect translation does not register as a translation at all - it seems like an excellent original poem. I'm sure that most Russians speakers don't know that the translation of The Gipsy Trail mentioned above is a translation rather than an original [song](https://www.youtube.com/watch?v=O7lYXuJMwYo). I find this to be desirable, but not as desirable as preserving the meaning (which I already complained about - but argh how it irks me!).
+
+# 4. Priorities
+
+That rounds up the dimensions I'm aware of! I went through them in the order I prioritize them: **spirit > meaning > meter > rhymes > naturalness**
+
+Of course, from multi-objective optimization we know that making trade-offs ain't easy, and sometimes large gains on lower-ranked dimensions are worth small losses on higher-ranked ones.
+
+Except the spirit. I swear out loud whenever I see a translator butcher that. "Niet doen!", as the Dutch say. Don't do it! Just don't!
+
+# 5. Living words
+
+Trading off these dimensions is an imprecise and difficult art that I'm certainly not an authority on. Still, I find the process & the result rewarding, and I recommend that you, dear reader, try your hand at it too!
+
+After all, songs & poetry span languages and predate writing, with imprecision tied to their nature as activities done by us, imperfect humans. Songs change as they travel through space & time - a translation is but one such change, and one that doesn't have to be perfect to be enjoyable. 
+
+... This is what I tell myself when I realize that after working on a translation for weeks or months, I still cannot make it perfect. I recall that trade-offs are unavoidable and that letting go is healthy. So I declare the work done and move on.
+
+Sometimes, I do go back. Looking with fresh eyes can be enlightening and my skills improve over time. So I tinker with the old translations. If so, I keep the date of the original version (however different it may have been), as these translations are a part of my life story, landmarks that help me remember my past journey on the river of time. 
+
+Still, I like viewing these words as living, potentially changing when I change. The meticuluous part of me struggles against the imprecision of this all - and so to pacify it, I'm explicitly discussing this here. Beware: as words are wind, so are dates.
+
+I hope that you, dear reader, will enjoy reading (or maybe reciting or singing) my translations as much as I enjoyed crafting them!
