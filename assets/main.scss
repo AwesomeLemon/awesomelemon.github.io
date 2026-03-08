@@ -488,6 +488,17 @@ table td { border-color: var(--border); }
   color: #d4a017;
 }
 
+.translations-col--artist {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-character: "-";
+  padding-right: 0.5rem;
+}
+
 .translations-col--song,
 .translations-col--translated {
   overflow: hidden;
@@ -638,6 +649,10 @@ table td { border-color: var(--border); }
   .translations-col--starred { grid-area: starred; justify-self: center; }
   .translations-col--artist { grid-area: artist; display: block; }
   .translations-col--artist {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    overflow-wrap: anywhere;
     border-bottom: 1px dashed color-mix(in srgb, var(--border) 35%, transparent);
     padding-bottom: 1px;
     margin-bottom: 1px;

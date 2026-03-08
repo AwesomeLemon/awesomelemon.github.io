@@ -3,13 +3,13 @@ layout: post
 artist: "Miracle of Sound"
 song: "Zombie Holiday"
 link: https://youtu.be/HIE2NYbizrA?si=h1tGPI5ZWRY63I4F&t=27
-translated_title: "Отпуск с зомби"
+translated_title: "Отпуск средь зомбей"
 source_lang: en
 target_lang: ru
 date: 2022-01-02 12:00:00 +0000
 location: Амстердам
 wide: true
-wide_max: 980px
+wide_max: 950px
 ---
 
 [Первая версия](https://docs.google.com/spreadsheets/d/1vKJhCrK7h9haj8Y4yeKTBmgraawlzau96WYwT3ml2pA/edit?gid=1703731742#gid=1703731742) была опубликована в [сборнике переводов](https://docs.google.com/document/d/1cKbanxLcQEvXY1UJt4Sac2euh9SJII5rGwFBtzDUm8s/edit?tab=t.0) ВК группы [фанатов Miracle of Sound](https://vk.com/miracleofsound).
