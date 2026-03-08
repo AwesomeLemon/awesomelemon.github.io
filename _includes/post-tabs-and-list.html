@@ -1,6 +1,7 @@
 {%- assign blog_posts = site.posts -%}
 {%- assign general_posts = site.posts_general | sort: "date" | reverse -%}
 {%- assign translation_posts = site.translations | sort: "date" | reverse -%}
+{%- assign translation_philosophy_post = site.posts_general | where: "slug", "translation-philosophy" | first -%}
 {%- assign default_view = include.default_view | default: "blog_technical" -%}
 {%- if default_view == "blog" -%}
   {%- assign default_view = "blog_technical" -%}
@@ -60,6 +61,11 @@
 
   <section class="content-panel" id="translations" data-view-panel="translations">
     {%- if translation_posts and translation_posts.size > 0 -%}
+      {%- if translation_philosophy_post -%}
+        <p style="text-align: center;">
+          <a href="{{ translation_philosophy_post.url | relative_url }}">{{ translation_philosophy_post.title | escape }}</a>
+        </p>
+      {%- endif -%}
       <ul class="translations-table" role="list">
         {%- for post in translation_posts -%}
           {%- assign source_lang = post.source_lang | default: post.from_lang | default: "en" | downcase -%}
