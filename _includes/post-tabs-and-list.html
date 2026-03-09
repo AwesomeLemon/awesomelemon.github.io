@@ -2,6 +2,8 @@
 {%- assign general_posts = site.posts_general | sort: "date" | reverse -%}
 {%- assign translation_posts = site.translations | sort: "date" | reverse -%}
 {%- assign translation_philosophy_post = site.posts_general | where: "slug", "translation-philosophy" | first -%}
+{%- assign technical_feed_path = site.feed.path | default: "/feed.xml" -%}
+{%- assign general_feed_path = site.feed.collections.posts_general.path | default: "/feed/general.xml" -%}
 {%- assign default_view = include.default_view | default: "blog_technical" -%}
 {%- if default_view == "blog" -%}
   {%- assign default_view = "blog_technical" -%}
@@ -30,6 +32,11 @@
             {%- endif -%}
             <span class="post-meta post-meta--card-date">{{ post.date | date: "%Y-%m-%d" }}</span>
           </li>
+          {%- if forloop.first -%}
+            <li class="feed-subscribe-plaque">
+              <a href="{{ technical_feed_path | relative_url }}">Subscribe</a> to the technical blog via RSS - I recommend <a href="https://www.commafeed.com/">CommaFeed</a>
+            </li>
+          {%- endif -%}
         {%- endfor -%}
       </ul>
     {%- else -%}
@@ -52,6 +59,11 @@
             {%- endif -%}
             <span class="post-meta post-meta--card-date">{{ post.date | date: "%Y-%m-%d" }}</span>
           </li>
+          {%- if forloop.first -%}
+            <li class="feed-subscribe-plaque">
+              <a href="{{ general_feed_path | relative_url }}">Subscribe</a> to the general blog via RSS - I recommend <a href="https://www.commafeed.com/">CommaFeed</a>
+            </li>
+          {%- endif -%}
         {%- endfor -%}
       </ul>
     {%- else -%}

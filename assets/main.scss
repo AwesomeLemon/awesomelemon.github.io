@@ -343,6 +343,18 @@ table td { border-color: var(--border); }
   border-radius: 10px;
 }
 
+.content-listing .post-list > li.feed-subscribe-plaque {
+  display: block;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  width: 80%;
+  margin: -0.35rem auto 0.8rem auto;
+  padding: 2px 0 8px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
 .image-pair {
   min-width: 0;
 }
