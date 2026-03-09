@@ -35,6 +35,9 @@
   {%- endif -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
+  {%- if site.feed and site.feed.collections and site.feed.collections.posts_general and site.feed.collections.posts_general.path -%}
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }} - General posts" href="{{ site.feed.collections.posts_general.path | relative_url }}">
+  {%- endif -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}

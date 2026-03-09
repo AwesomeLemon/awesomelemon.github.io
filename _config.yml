@@ -41,6 +41,11 @@ collections:
     output: true
     permalink: /translations/:name/
 
+feed:
+  collections:
+    posts_general:
+      path: /feed/general.xml
+
 # Limit header navigation to specific pages (prevents AGENTS.md from showing up)
 header_pages:
   - index.md
