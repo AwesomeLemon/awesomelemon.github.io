@@ -1,5 +1,7 @@
 {%- assign left_title = include.left_title | default: "Original" -%}
 {%- assign right_title = include.right_title | default: "Translation" -%}
+{%- assign left_col = include.left_col | default: "1fr" -%}
+{%- assign right_col = include.right_col | default: "1fr" -%}
 
 {%- assign original_text = include.original | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
 {%- assign translation_text = include.translation | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
@@ -15,7 +17,12 @@
 {%- endif -%}
 
 <div class="translation-grid-wrap">
-  <div class="translation-grid" role="table" aria-label="{{ left_title }} and {{ right_title }} side by side">
+  <div
+    class="translation-grid"
+    style="--translation-grid-left: {{ left_col | escape }}; --translation-grid-right: {{ right_col | escape }};"
+    role="table"
+    aria-label="{{ left_title }} and {{ right_title }} side by side"
+  >
     {%- if line_count > 0 -%}
       {%- assign last_index = line_count | minus: 1 -%}
       {%- for i in (0..last_index) -%}

@@ -720,7 +720,7 @@ table td { border-color: var(--border); }
 
 .translation-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: var(--translation-grid-left, 1fr) var(--translation-grid-right, 1fr);
   column-gap: 0;
   margin: 1.25rem 0;
 }
