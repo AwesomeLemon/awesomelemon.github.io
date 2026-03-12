@@ -106,3 +106,5 @@ Sometimes, I do go back. Looking with fresh eyes can be enlightening and my skil
 Still, I like viewing these words as living, potentially changing when I change. The meticulous part of me struggles against the imprecision of all this - and so to pacify it, I'm explicitly discussing this here. Thus, beware: as words are wind, so are dates.
 
 In the end, I hope that you, dear reader, will enjoy reading (or maybe reciting or singing) my translations as much as I enjoyed crafting them!
+
+{% include comments.html %}

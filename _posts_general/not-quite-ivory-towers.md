@@ -33,3 +33,5 @@ I believe that a more collaborative way can be achieved, with innovation shared 
 {:refdef: style="text-align: center;"}
 *(source: [Unsplash](https://unsplash.com/photos/a-grassy-field-with-mountains-in-the-background-BZ_eSjUtAYg))*
 {: refdef}
+
+{% include comments.html %}
