@@ -14,9 +14,9 @@ excerpt: |
 
 But any tragedy - metaphorical or literal - can also bring improvement, as brilliant people work together to dispel the darkness. In science, this has been the role of academia as an institution and a community of communities devoted to collaborative search for truth. 
 
-It is no secret that the academia of yore is gone. Bureaucrats and careerists have infiltrated the ivory tower, which remains standing only thanks to the valiant efforts of true believers. Still, finding their honest work amid derivative papers and misleading claims is a disheartening endeavor. 
+It is no secret that the academia of yore is gone. Bureaucrats and careerists have infiltrated the ivory tower, which remains standing only thanks to the valiant efforts of true believers. I'm grateful to have done my PhD at a lab where integrity is taken seriously and good science is being done and taught - which definitely left a positive mark on me. Still, not every PhD student is as lucky as I, and so finding honest work amid derivative papers and misleading claims is a disheartening endeavor.
 
-During my PhD, I wasted time and effort engaging with results that never should have reached anyone's eyes - or left the authors' fingertips. I grew ever more skeptical (anyone who knew me before would be surprised this was even possible!) and disillusioned with the prospects of academia-driven science. 
+During the first year of my PhD, I wasted time and effort engaging with results from other labs that never should have reached anyone's eyes - or left the authors' fingertips. I grew ever more skeptical (anyone who knew me before would be surprised this was even possible!) and disillusioned with the prospects of academia-driven science beyond the walls of (unfortunately) not-too-common good labs. 
 
 As an engineer at heart, I'm interested in building things that work and improve the world, so after submitting my thesis, I sought to switch to industry. Of course, industry is no fairy tale, with some companies peddling hot air and some working hard to usher in the apocalypse. Still, it is possible to find a place where reality is faced and then molded to become more accommodating to humans.
 
