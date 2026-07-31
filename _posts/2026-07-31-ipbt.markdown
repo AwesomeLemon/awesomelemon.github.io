@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "Iterated Population Based Training with Task-Agnostic Restarts [ICML]"
+slug: ipbt
+date:   2026-07-05 23:00:00 +0200
+comments: true
+---
+
+**TL;DR** We introduce a PBT variant that uses task-agnostic restarts to automatically adjust its step size and efficiently optimize hyperparameter schedules. \| [Paper](https://arxiv.org/abs/2511.09190) \| [Code](https://github.com/AwesomeLemon/IPBT)
+
+<!--more-->
+
+Check out the poster for a high-level overview:
+
+[![IPBT poster](/pics/ipbt/poster-1.png)](/pics/ipbt/poster-1.png){: style="width: 100%;" }
+
+
+
+P.S. Shout out to my supervisors & co-authors [Tanja Alderliesten](https://scholar.google.com/citations?user=K5wZcYEAAAAJ) and [Peter Bosman](https://scholar.google.com/citations?user=YED2pAoAAAAJ) for their help with this research!
+
+{% include comments.html %}
