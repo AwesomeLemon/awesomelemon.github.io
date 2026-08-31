@@ -2,7 +2,7 @@
 layout: post
 artist: "Adrienne Valerie"
 song: "Lucky, Lucky, Lucky Me"
-link: https://www.youtube.com/watch?v=vpPoKbZNl2M
+link: https://www.youtube.com/watch?v=vpPoKbZNl2M&t=12
 translated_title: "Мне везёт, везёт, везёт"
 source_lang: en
 target_lang: ru
