@@ -2,6 +2,7 @@
 {%- assign right_title = include.right_title | default: "Translation" -%}
 {%- assign left_col = include.left_col | default: "1fr" -%}
 {%- assign right_col = include.right_col | default: "1fr" -%}
+{%- assign original_credits = include.original_credits -%}
 
 {%- assign original_text = include.original | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
 {%- assign translation_text = include.translation | default: "" | replace: "\r\n", "\n" | replace: "\r", "\n" | strip -%}
@@ -25,11 +26,14 @@
   >
     {%- if line_count > 0 -%}
       {%- assign last_index = line_count | minus: 1 -%}
+      {%- assign original_stanza_index = 0 -%}
       {%- for i in (0..last_index) -%}
         {%- assign original_line = original_lines[i] | default: "" -%}
         {%- assign translation_line = translation_lines[i] | default: "" -%}
         {%- assign original_trim = original_line | strip -%}
         {%- assign translation_trim = translation_line | strip -%}
+        {%- assign next_index = i | plus: 1 -%}
+        {%- assign next_original_trim = original_lines[next_index] | default: "" | strip -%}
 
         {%- if original_trim == "" and translation_trim == "" -%}
           <div class="translation-grid__line translation-grid__line--break" role="cell" data-row="{{ i }}" aria-hidden="true">&nbsp;</div>
@@ -41,6 +45,16 @@
           <div class="translation-grid__line" role="cell" data-row="{{ i }}">
             {%- if translation_trim == "" -%}&nbsp;{%- else -%}{{ translation_line | escape }}{%- endif -%}
           </div>
+        {%- endif -%}
+        {%- if original_trim != "" and next_original_trim == "" -%}
+          {%- assign credit = original_credits[original_stanza_index] -%}
+          {%- if credit.author and credit.url -%}
+            <div class="translation-grid__credit" role="cell">
+              (c) <a href="{{ credit.url | escape }}">{{ credit.author | escape }}</a>
+            </div>
+            <div class="translation-grid__credit translation-grid__credit--empty" role="cell" aria-hidden="true"></div>
+          {%- endif -%}
+          {%- assign original_stanza_index = original_stanza_index | plus: 1 -%}
         {%- endif -%}
       {%- endfor -%}
     {%- endif -%}

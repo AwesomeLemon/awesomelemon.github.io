@@ -755,14 +755,20 @@ table td { border-color: var(--border); }
   padding: 4px 0;
 }
 
+.translation-grid__credit {
+  padding: 2px 0 4px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
 .translation-grid__line.is-hovered {
   background: color-mix(in srgb, var(--link-underline) 18%, transparent);
 }
 
-@media screen and (min-width: 1100px) {
-  .post--wide {
-    width: min(var(--post-wide-max, 1280px), calc(100vw - 32px));
-    margin-left: 50%;
-    transform: translateX(-50%);
-  }
+.post--wide {
+  width: min(var(--post-wide-max, 1280px), calc(100vw - 32px));
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
