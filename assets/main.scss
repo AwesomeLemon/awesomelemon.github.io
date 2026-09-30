@@ -471,8 +471,12 @@ table td { border-color: var(--border); }
 .translations-row__link,
 .translations-row__link:visited {
   display: grid;
-  grid-template-columns: 66px 28px 130px 200px 70px 240px;
+  grid-template-columns: 66px 28px 200px 70px minmax(0, 1fr);
+  grid-template-areas:
+    "date starred artist song song"
+    ". . . direction translated";
   column-gap: 0;
+  row-gap: 2px;
   align-items: baseline;
   padding: 6px 0;
   border-bottom: 1px dashed var(--border);
@@ -491,16 +495,19 @@ table td { border-color: var(--border); }
 }
 
 .translations-col--date {
+  grid-area: date;
   color: var(--muted);
   letter-spacing: 0.02em;
 }
 
 .translations-col--starred {
+  grid-area: starred;
   text-align: center;
   color: #d4a017;
 }
 
 .translations-col--artist {
+  grid-area: artist;
   overflow: visible;
   text-overflow: clip;
   white-space: normal;
@@ -521,7 +528,11 @@ table td { border-color: var(--border); }
   white-space: normal;
 }
 
+.translations-col--song { grid-area: song; }
+.translations-col--translated { grid-area: translated; }
+
 .translations-col--direction {
+  grid-area: direction;
   justify-self: center;
   color: var(--muted);
   white-space: nowrap;
