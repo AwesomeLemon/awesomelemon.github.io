@@ -28,7 +28,7 @@ original_credits:
 
 A "[pastry](https://en.wikipedia.org/wiki/Pirozhki) poem" (pirozhók) is a kind of a Russian haiku. Except funnier and much less high-brow.
 
-It has a specific format and meter, but intentionally no rhymes. Capital letters and punctuation is usually dropped, but I left some in the translations to make them more readable (I also added stress marks to names). In any case, here are my favourite pirozhkis, enjoy!
+It has a specific format and meter, but intentionally no rhymes. Capital letters and punctuation are usually dropped, but I left some in the translations to make them more readable (I also added stress marks to names). In any case, here are my favourite pirozhkis, enjoy!
 
 <div class="horizontal-divider" aria-hidden="true"></div>
 
